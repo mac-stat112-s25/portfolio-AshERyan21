@@ -1,5 +1,202 @@
 ---
 title: "Univariate Viz"
+format:
+  html:
+    toc: true
+    toc-depth: 1
+    embed-resources: true
 ---
 
 Use this file for practice with the **univariate viz** in-class activity.  Refer to the class website for details.
+
+
+# Example 1: Done for HW
+```{r}
+# Import data
+hikes <- read.csv("https://mac-stat.github.io/data/high_peaks.csv")
+
+```
+
+- It appears that as the data is currently structured at the top of the data frame are those with the highest elevations. At first glance it does not appear that elevation is necessarily associated with difficulty or rating.
+
+- It does not appear a first glance there is a relationship between time and a hike's elevation. 
+
+
+# Example 2: Done for HW
+The story would be much more challenging to interpret and I would have more questions most likely.
+
+
+# Exercise 1: Research Questions
+
+```{r}
+#Preview what the data looks like
+head(hikes)
+```
+a. I would like a visualization to capture how many hikes fall into each rating, and the distribtion of the rating variable.  
+
+b. I would like a visualization to capture the averages, or the variations of elevation as well as how the variable changes and what different elevations are present. 
+
+# Exercise 2: Load tidyverse
+
+```{r}
+# Use the ggplot function
+# ggplot(hikes, aes(x = rating))
+```
+The message tells us that we can't get the function.
+
+```{r}
+# Load the package
+library(tidyverse)
+```
+# Exercise 3: Bar Chart Raings - Part 1
+```{r}
+ggplot(hikes, aes(x = rating))
+```
+This shows the frame of the data viz, and sets the scale of the x axis and labels it. There is nothing graphed or plotted. The first argument is the data frame you are pulling from, x=rating sets the rating variable as the x axis. I think that aes stands for - aesthetics, noting what the aesthetics of the data visualization will be. 
+
+# Exercise 4: Bar Chart Raings - Part 2
+```{r}
+# This specified a specific type of plot, adding a bar chart to the visualization.
+ggplot(hikes, aes(x = rating)) +
+  geom_bar()
+```
+```{r}
+# Added labels to the data viz
+ggplot(hikes, aes(x = rating)) +
+  geom_bar() +
+  labs(x = "Rating", y = "Number of hikes")
+```
+
+```{r}
+# Fill, changes the color of the bars
+ggplot(hikes, aes(x = rating)) +
+  geom_bar(fill = "blue") +
+  labs(x = "Rating", y = "Number of hikes")
+```
+
+```{r}
+# Adds color, outlines the bars in orange
+ggplot(hikes, aes(x = rating)) +
+  geom_bar(color = "orange", fill = "blue") +
+  labs(x = "Rating", y = "Number of hikes")
+```
+
+```{r}
+# Added a theme to the data viz, changed the theme particularly the background
+ggplot(hikes, aes(x = rating)) +
+  geom_bar(color = "orange", fill = "blue")  +
+  labs(x = "Rating", y = "Number of hikes") +
+  theme_minimal()
+```
+
+
+# Exercise 5: Bar Chart Follow-up
+a. The plus allows you to add customizations and specializations to the plot. I think adding geom, means geometric as we are adding geometric bars? Labs() stands for labels and adds labels that you can modify to the data viz. Color outlines the bars, fill fills them in with different colors. 
+
+b. From this visualization I am able to learn that a lot of the hikes fall into the moderate rating category, and that the least fall into the difficult category. 
+
+c. I do not like the the labels are lowercase, I also do not like that the are outlined in orange. 
+
+
+# Exercise 6: Sad Bar Chart
+```{r}
+# Added a theme to the data viz, changed the theme particularly the background
+ggplot(hikes, aes(x = elevation)) +
+  geom_bar(fill = "blue")  +
+  labs(x = "Elevation", y = "Number of hikes") +
+  theme_minimal()
+```
+This is not an effective visualization. This answers the range of the different elevations and the number of hikes that are each elevation. However, it is very noisy and messy and does not communicate information clearly.
+
+# Exercise 7: A Histogram of Elevation
+
+Part a
+There are about 6 hikes between 4500 and 4700, I think 2 hikes have an elevation of at least 5100 feet.
+
+Part b
+From this histogram we are able to learn a lot about the elevations of the hikes in the Adirondacks. It appears that the majority of the hikes fall in an elevation range of roughly 1000 feet, from 4000 to 5000 but there are some outliers are the ends of the tails. The minimum elevation height is around 3750 feet and the max is 5500 feet. The average elevation of hike is roughly 4250 feet. The graph looks a little right-skewed but nothing crazy. 
+
+
+
+# Exercise 8: Building Histograms - Part 1
+```{r}
+ggplot(hikes, aes(x = elevation)) + 
+  geom_histogram()
+```
+
+
+# Exercise 9: Building Histograms - Part 2
+
+```{r}
+# Geom_histogram() plots a histogram
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram()
+```
+
+
+```{r}
+# Color - adds white inbetween each bar
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white")
+```
+
+
+```{r}
+# Fill- changes the bar color to blue
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white", fill = "blue") 
+```
+```{r}
+# Labs - allows to edit the axis labels
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white") +
+  labs(x = "Elevation (feet)", y = "Number of hikes")
+
+```
+```{r}
+# Binwidth - sets the width of each bin (made them very wide)
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white", binwidth = 1000) +
+  labs(x = "Elevation (feet)", y = "Number of hikes")
+```
+```{r}
+# Made the bins narrower
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white", binwidth = 5) +
+  labs(x = "Elevation (feet)", y = "Number of hikes")
+```
+```{r}
+# Binwidths were a bit more easy to look at and clear
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white", binwidth = 200) +
+  labs(x = "Elevation (feet)", y = "Number of hikes")
+```
+
+
+# Exercise 10: Histogram Follow-up
+The function geom_historgram added the layer, with fill setting the bin color and color dictating the space between the bins. Adding the space between the bins makes it easier to differentiate between them. Binwidth changes the number included in each bin, if they are too big or too small you do not learn as much from them and lose the information you want to communicate. 
+
+
+# Exercise 11: Density Plots
+```{r}
+ggplot(hikes, aes(x = elevation)) +
+  geom_density(fill = "blue")
+```
+From the density plot we learn more average of the elevations and the range of how many hikes have each elevation. The shape itself of the range is a bit trickier to see as well as the exact elevations - the roundness of the density plot takes out some of that information. 
+
+# Exercise 12: Density Plots vs Histograms
+I like density plots because you are able to see some of the averages more and general patterns of the elevations. The histograms however allow individual elevations to be highlighted and isolated - in this context knowing that information more clearly seems to be a little be of a better idea. 
+
+
+# Exercise 13: Code = communication
+The two examples of the unidented code are super tricky to read and modify, it makes understanding each element and area of modification more difficult to evaluate.
+
+Exercise 14
+```{r}
+# Data on students in this class
+survey <- read.csv("https://ajohns24.github.io/data/112/about_us_2024.csv")
+
+# World Cup data
+world_cup <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-29/worldcups.csv")
+```
+
