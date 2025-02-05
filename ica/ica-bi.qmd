@@ -1,5 +1,276 @@
 ---
 title: "Bivariate Viz"
+format:
+  html:
+    toc: true
+    toc-depth: 1
+    embed-resources: true
 ---
 
 Use this file for practice with the **bivariate viz** in-class activity.  Refer to the class website for details.
+
+
+# Examples: To Prepare for Class
+```{r}
+# Import data
+survey <- read.csv("https://ajohns24.github.io/data/112/about_us_2024.csv")
+
+# How many students have now filled out the survey?
+
+nrow(survey)
+
+# What type of variables do we have?
+str(survey)
+```
+
+```{r}
+# Attach a package needed to use the ggplot function
+library(tidyverse)
+
+
+# Make a ggplot
+ggplot(survey, aes(x = hangout)) +
+  geom_bar(fill = "blue") + 
+  theme_minimal()
+
+```
+```{r}
+#To understand temperature
+
+ggplot(survey, aes(x = fave_temp)) +
+  geom_bar(fill = "blue") + 
+  theme_minimal()
+
+ggplot(survey, aes(x = fave_temp)) +
+  geom_histogram(color = "white", fill = "blue") +
+  theme_minimal()
+```
+
+# In Class Exercises
+
+
+```{r}
+# Load data
+elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv")
+
+# Check it out
+head(elections)
+```
+
+# Exercise 0: Review
+
+Part a.
+I would guess 65%?
+
+```{r}
+ggplot(elections, aes(x = winner_20)) +
+  geom_bar(fill = "blue") + 
+  theme_minimal()
+
+```
+
+Part b.
+```{r}
+ggplot(elections, aes(x = repub_pct_20)) +
+  geom_histogram(fill = "blue") + 
+  theme_minimal()
+
+```
+
+# Exercise 1: Quantitative vs Quantitative Intution Check
+
+```{r}
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point() + 
+  geom_smooth() + 
+  theme_minimal()
+```
+# Exercise 2: 2 Quantitiative Variables
+```{r}
+# Set up the plotting frame
+# How does this differ than the frame for our histogram of repub_pct_20 alone? We have two different axis of different variables
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16))
+```
+
+```{r}
+# Add a layer of points for each county
+# Take note of the geom! --> Geom_point!Cause there's a point for each
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point()
+```
+
+```{r}
+# Change the shape of the points
+# What happens if you change the shape to another number? Different point shapes!
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point(shape = 4)
+```
+
+```{r}
+# YOU TRY: Modify the code to make the points "orange"
+# NOTE: Try to anticipate if "color" or "fill" will be useful here. Then try both. color worked!
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point(color = "orange" )
+```
+
+```{r}
+# Add a layer that represents each county by the state it's in
+# Take note of the geom and the info it needs to run! geom_text instead of geom_point, needs an additional variable to generate it
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_text(aes(label = state_abbr))
+```
+
+# Exercise 3: Reflect
+Texas seemed to be some of the biggest outliers, however the relationship seems to be very strong. It appears to be a positive relationship. 
+
+# Exercise 4: Visualizing trend
+```{r}
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point() +
+  geom_smooth()
+```
+Part a.
+```{r}
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_smooth()
+```
+Part b.
+```{r}
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+# Exercise 5: Your Turn
+```{r}
+# Scatterplot of repub_pct_20 vs median_rent
+ggplot(elections, aes(y = repub_pct_20, x = median_rent)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+
+# Scatterplot of repub_pct_20 vs median_age
+ggplot(elections, aes(y = repub_pct_20, x = median_age)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+From these two scatter plots, it appears that the median_rent has a stronger relationship than median_age as the linear relationship is a bit stronger. The relationship is negative between median_rent, as rent is lower higher republican % is higher.
+
+# Exercise 6: A Sad Scatterplot
+
+A scatter plot would be challenging comparing a quantitative variable and a categorical variable, these would be a challenging numeric variable relationships. 
+
+```{r}
+ggplot(elections, aes(y = repub_pct_20, x = historical)) +
+  geom_point()
+```
+
+# Exercise 7: Quantitative vs Categorical - Violins & Boxes
+
+```{r}
+# Side-by-side violin plots
+ggplot(elections, aes(y = repub_pct_20, x = historical)) +
+  geom_violin()
+```
+```{r}
+# Side-by-side boxplots (defined below)
+ggplot(elections, aes(y = repub_pct_20, x = historical)) +
+  geom_boxplot()
+```
+Reflect: It appears that county-level support was higher on average in the red states, and lower in blue states but was still higher than 50% for all. 
+
+# Exercise 8: Quantitative vs Categorical - Intuition Check
+```{r}
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_density()
+
+```
+
+
+# Exercise 9: Quantitative vs Categorical - Density Plots
+```{r}
+# Name two "bad" things about this plot It is hard to understand what is really happening. It is also hard to understand the relative scales. 
+
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_density()
+```
+
+```{r}
+# What does scale_fill_manual do? Sets the colors for each density plot
+
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_density() +
+  scale_fill_manual(values = c("blue", "purple", "red"))
+```
+
+```{r}
+# What does alpha = 0.5 do? This changes the transparency values
+
+# Play around with different values of alpha, between 0 and 1
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_density(alpha = 0.75) +
+  scale_fill_manual(values = c("blue", "purple", "red"))
+```
+
+```{r}
+# What does facet_wrap do?! Sets each up on its own graph path by category
+
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_density() +
+  scale_fill_manual(values = c("blue", "purple", "red")) +
+  facet_wrap(~ historical)
+```
+
+```{r}
+# Let's try a similar grouping strategy with a histogram instead of density plot.
+# Why is this terrible? There is just so much going on and it is all on top of eachtother.
+
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_histogram(color = "white") +
+  scale_fill_manual(values = c("blue", "purple", "red"))
+```
+# Exercise 10
+Personally, I am a fan of density plots separated by category for visualizing the relationships between quantitative and categorical variables. Density plots allow for variation relative to box plots show a little more dynamics of the relationships relative to eachother. Density plots however do not as easily show the average or the quartiles as easily as boxplots do. 
+
+# Exercise 11: Categorical vs Categorical - Intuition Check
+```{r}
+# Plot 1: adjust this to recreate the top plot
+ggplot(elections, aes(x = historical, fill = winner_20)) +
+  geom_bar()
+```
+```{r}
+# Plot 2: adjust this to recreate the bottom plot
+ggplot(elections, aes(x = winner_20)) +
+  geom_bar() + 
+  facet_wrap (~ historical)
+```
+# Exercise 12: Categorical vs Categorical
+```{r}
+# A stacked bar plot
+# How are the "historical" and "winner_20" variables mapped to the plot, i.e. what roles do they play? Historical is the x axis - the predictor, while winner_20 is the response variable. 
+
+ggplot(elections, aes(x = historical, fill = winner_20)) +
+  geom_bar()
+```
+
+```{r}
+# A faceted bar plot
+ggplot(elections, aes(x = winner_20)) +
+  geom_bar() +
+  facet_wrap(~ historical)
+```
+
+```{r}
+# A side-by-side bar plot
+# Note the new argument to geom_bar sets them separated under together
+
+ggplot(elections, aes(x = historical, fill = winner_20)) +
+  geom_bar(position = "dodge")
+```
+
+```{r}
+# A proportional bar plot
+# Note the new argument to geom_bar
+ggplot(elections, aes(x = historical, fill = winner_20)) +
+  geom_bar(position = "fill")
+```
+
