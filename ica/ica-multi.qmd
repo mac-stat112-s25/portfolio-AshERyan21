@@ -1,5 +1,5 @@
 ---
-title: "Multivariate VixBivariate Viz"
+title: "Multivariate Viz"
 format:
   html:
     toc: true
