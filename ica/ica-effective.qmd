@@ -44,7 +44,7 @@ Replace A, B, C, and D in the code below to:
 ```{r}
 ggplot(weather, aes(y = temp3pm, x = temp9am, color = location)) + 
   geom_point() + 
-  labs(x = "A", y = "B", title = "C", color = "D")  
+  labs(x = "Temperature at 9am ", y = "Temperature at 3pm", title = "Temperature Patterns by Location", color = "Location")  
 ```
 
 #### Part b {.unnumbered}
@@ -55,20 +55,20 @@ When we're including our plot in an article, paper, book, or other similar outle
 -   Include your x-axis, y-axis, and legend labels from Part a.
 -   Render your Rmd and check out how the figure caption appears.
 ```{r}
-#| fig-cap: "???"
+#| fig-cap: "Temperature Patterns by Location in Celsius for three Australian cities."
 
 ggplot(weather, aes(y = temp3pm, x = temp9am, color = location)) + 
   geom_point() + 
-  labs(x = "???", y = "???", color = "???")  
+  labs(x = "Temperature at 9am ", y = "Temperature at 3pm", color = "Location")  
 ```
 
 ```{r}
 #| echo: false
-#| fig-cap: "???"
+#| fig-cap: "Temperature Patterns by Location in Celsius for three Australian cities."
 
 ggplot(weather, aes(y = temp3pm, x = temp9am, color = location)) + 
   geom_point() + 
-  labs(x = "???", y = "???", color = "???")  
+  labs(x = "Temperature at 9am ", y = "Temperature at 3pm", color = "Location")  
 ```
 
 \
@@ -101,8 +101,7 @@ Add appropriate alt text at the top of the chunk, in `fig-alt`. Then render your
 
 ```{r}
 #| fig-cap: "Density plots of 3pm temperatures in 3 Australian locations."
-#| fig-alt: "???"
-
+#| fig-alt: "A density plot of 3pm temperatures in Hobart, Uluru, and Wollongong, Australia. Each city is a different color, they are layered on top of eachother. Each city has a different pattern with Hobart operating at a lower temperature, Wollongong around 20 Celsius, and Uluru operating at higher temperatures."
 ggplot(weather, aes(x = temp3pm, fill = location)) + 
   geom_density(alpha = 0.5) + 
   labs(x = "3pm temperature (Celsius)")  
@@ -111,7 +110,7 @@ ggplot(weather, aes(x = temp3pm, fill = location)) +
 ```{r}
 #| echo: false
 #| fig-cap: "Density plots of 3pm temperatures in 3 Australian locations."
-#| fig-alt: "???"
+#| fig-alt: "A density plot of 3pm temperatures in Hobart, Uluru, and Wollongong, Australia. Each city is a different color, they are layered on top of eachother. Each city has a different pattern with Hobart operating at a lower temperature, Wollongong around 20 Celsius, and Uluru operating at higher temperatures."
 
 ggplot(weather, aes(x = temp3pm, fill = location)) + 
   geom_density(alpha = 0.5) + 

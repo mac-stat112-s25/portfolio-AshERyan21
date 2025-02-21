@@ -3,3 +3,49 @@ title: "Trivariate Viz"
 ---
 
 Use this file to generate a professional looking **trivariate** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+
+```{r}
+library(tidyverse)
+library(openintro)
+library(leaflet)
+library(gplots)
+library(rnaturalearth)
+library(mosaic)
+library(sf)
+library(maps)
+library(RColorBrewer)
+library(socviz)
+library(dplyr)
+library(tidytuesdayR)
+library(fivethirtyeight)
+
+```
+
+
+```{r}
+# This code comes from the ICA.
+data("Birthdays")
+daily_births <- Birthdays |> 
+  group_by(date) |> 
+  summarize(births = sum(births)) |> 
+  mutate(year = year(date), 
+         month = month(date, label = TRUE),
+         day_of_month = mday(date),
+         day_of_week = wday(date, label = TRUE))
+```
+
+
+
+```{r}
+#| echo: false
+#| fig-cap: "A scatter plot of births in the United States from 1969 to 1988 broken down by day of the week by Ashlyn R."
+#| fig-alt: "A scatter plot with year on the x- axis from 1969 to 1988 and Births on the y axis ranging from 6,000 to a little over 12,000. The scatter plot is colored by day of the week, and it appears that sunday and saturday are at the lower end of the spectrum with wednesday, thursday and friday seeing the highest number of births. Over time the entire data set trends weakly positively up. The data was sourced from: Birthdays."
+
+
+ggplot(daily_births, aes(y = births, x = date, color = day_of_week)) +
+  geom_point() +
+  geom_smooth() +
+  labs( x = "Date", y = "Births", color = "Day of the Week", title = "United States Births Over Time by Day of the Week") +
+  theme_classic()
+
+```
