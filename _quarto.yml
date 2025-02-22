@@ -4,7 +4,7 @@ project:
 
 book:
   title: "COMP/STAT112 Notebook"
-  author: "Your Name Here"
+  author: "Ashlyn Ryan"
   date: today
   reader-mode: true
   page-navigation: true
@@ -13,7 +13,7 @@ book:
   
   
   sidebar:
-    title: "Your Name Here"
+    title: "Ashlyn Ryan"
     collapse-level: 2
     style: "docked"
     pinned: true
@@ -31,12 +31,14 @@ book:
       - bw/bw-quad.qmd
       - bw/bw-spatial.qmd
 
-    - part: "In-class Activities"
-      chapters: 
-      - ica/quarto-demo.qmd
-      - ica/ica-uni.qmd
-      - ica/ica-bi.qmd
-      - ica/ica-spatial.qmd
+   #  - part: "In-class Activities"
+    #chapters: 
+     # - ica/quarto-demo.qmd
+      #- ica/ica-uni.qmd
+      #- ica/ica-bi.qmd
+      #- ica/ica-multi.qmd
+      #- ica/ica-spatial.qmd
+      #- ica/ica-effective.qmd
 
     
 format:

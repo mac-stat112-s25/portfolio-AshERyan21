@@ -26,6 +26,6 @@ hikes <- read.csv("https://mac-stat.github.io/data/high_peaks.csv")
 
 ggplot(hikes, aes(x = elevation)) +
   geom_histogram(fill = "blue", color = "white", binwidth = 200) +
-  labs(x = "Elevation of Hike (feet)", y = "Number of Hikes", title = "Distribution of the Elevation of Hikes in New York") +
+  labs(x = "Elevation of Hike (feet)", y = "Number of Hikes", title = "Distribution of the Elevation of Hikes in New Yorkqua") +
   theme_classic()
 ```
