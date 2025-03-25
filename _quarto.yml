@@ -31,15 +31,23 @@ book:
       - bw/bw-quad.qmd
       - bw/bw-spatial.qmd
 
-   #  - part: "In-class Activities"
-    #chapters: 
-     # - ica/quarto-demo.qmd
-      #- ica/ica-uni.qmd
-      #- ica/ica-bi.qmd
-      #- ica/ica-multi.qmd
-      #- ica/ica-spatial.qmd
-      #- ica/ica-effective.qmd
-
+    - part: "In-class Activities"
+      chapters: 
+      - ica/quarto-demo.qmd
+      - ica/ica-uni.qmd
+      - ica/ica-bi.qmd
+      - ica/ica-multi.qmd
+      - ica/ica-spatial.qmd
+      - ica/ica-effective.qmd
+      - ica/ica-wrangling.qmd
+      - ica/ica-dates.qmd
+      - ica/ica-reshaping.qmd
+      - ica/ica-joining.qmd
+      - ica/ica-factors.qmd
+    
+    - part: "Exam"
+      chapters: 
+      - exam/exam-1.qmd
     
 format:
   html:
