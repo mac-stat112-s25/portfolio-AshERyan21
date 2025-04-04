@@ -1,0 +1,30 @@
+---
+title: "SoloProject"
+editor: visual
+---
+
+```{r}
+#We need to create a Solo Project of a cholopleth map of either a shape or country
+
+#We need shape files denoting some boundary, ggplot2, sf packages
+
+#Go to Moodle
+```
+
+
+
+```{r}
+library(tidyverse)
+library(sf)
+library(mosaic)
+
+data <- read_sf("C:\\Users\\ashry\\OneDrive\\Documents\\GitHub\\portfolio-AshERyan21\\bw\\data\\Washington_School_District_Boundaries.shp")
+```
+
+```{r}
+ggplot() +
+  geom_sf(data = data,
+          aes(fill = ACSPopulat),
+          color = "blue", size = 0.15)
+```
+

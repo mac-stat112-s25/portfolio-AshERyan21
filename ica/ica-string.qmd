@@ -144,6 +144,12 @@ classes <- classes |>
 
 ```{r}
 # Use sem to create 2 new variables, one with only the semester (SP/FA) and 1 with the year
+# Use sem to create 2 new variables, one with only the semester (SP/FA) and 1 with the year
+classes |> 
+  mutate(semester = str_sub(sem, 1, 2),
+         year = str_sub(sem, 3, 6))
+
+classes
 
 ```
 
