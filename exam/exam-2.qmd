@@ -1,0 +1,16 @@
+---
+title: "Exam 2"
+number-sections: true
+execute: 
+  warning: true
+fig-env: 'figure'
+fig-pos: 'h'
+fig-align: center
+code-fold: false
+---
+
+
+
+My study guide for the test:
+
+<img src="exam-2-sg.jpg" alt="An image of the various topics we have covered in class so far"/>

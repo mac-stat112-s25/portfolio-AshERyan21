@@ -127,4 +127,8 @@ Effective visualizations are made up of many pieces and components, which can ra
 From these visualizations we learn that milk and wheat are two of the food categories that are consumed in the greatest amounts. Additionally, that there are some countries with consumption levels a lot higher than others. Questions that I would like to further explore would be: how does different countries vary in their CO2 emissions and how does CO2 emissions vary by food category. 
 
 
+My study guide for the test:
+
+<img src="exam-1-sg.jpg" alt="An image of the various topics we have covered in class so far"/>
+
 

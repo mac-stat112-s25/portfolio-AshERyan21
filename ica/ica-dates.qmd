@@ -319,7 +319,7 @@ daily_births <- Birthdays |>
 ```
 
 ```{r}
-daily_births |>
+daily_births <- daily_births |>
   mutate(W_day =wday(date, label = TRUE)) #This gives us the day as letters. 
 
 ```

@@ -499,10 +499,10 @@ billboard |>
 Use your wrangling tools to identify *which* songs are those above the line in Part a, i.e. with rankgings that went up from week 1 to week 2.
 
 ```{r}
-#billboard_n <- billboard |>
- # mutate(increase = wk2 - wk1)
+billboard_n <- billboard |>
+  mutate(increase = wk2 - wk1)
   
-#head(billboard_n, 6)
+head(billboard_n, 6)
 
 billboard_n |>
   filter(increase >0) |>
