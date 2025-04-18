@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>5&nbsp; Spatial Viz – COMP/STAT112 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
@@ -56,14 +53,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../ica/ica-uni.html" rel="next">
+<link href="../exam/exam-1.html" rel="next">
 <link href="../bw/bw-quad.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -75,8 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -102,18 +97,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
-<link rel="stylesheet" href="../style/custom.css">
+}</script><link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="../site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="../site_libs/leaflet-1.3.1/leaflet.js"></script><link href="../site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="../site_libs/proj4-2.6.2/proj4.min.js"></script><script src="../site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="../site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="../site_libs/leaflet-binding-2.2.2/leaflet.js"></script><link rel="stylesheet" href="../style/custom.css">
 </head>
-
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -124,15 +117,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Your Name Here</a> 
+      <a href="../">Ashlyn Ryan</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
@@ -150,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
@@ -164,8 +153,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../bw/bw-uni.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span></a>
@@ -195,8 +184,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exam/exam-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exam 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exam/exam-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Exam 2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/SoloProject.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">SoloProject</span></span></a>
+  </div>
+</li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
@@ -205,47 +212,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ica/ica-uni.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ica/ica-bi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bivariate Viz</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Bivariate Viz</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ica/ica-multi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mulivariate Viz</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Multivariate Viz</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../ica/ica-spatial.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Spatial Viz</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Spatial Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-effective.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Effective Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Wrangling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-dates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Dates</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-reshaping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Reshaping</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-joining.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Joining</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-factors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Factors</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-string.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Strings</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-dataimport.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Data Import</span></span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/bw-spatial.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span></a></li></ol></nav>
-<div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/bw-spatial.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">
+<span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span>
+</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -259,17 +312,129 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header>
+</header><p>Use this file to generate a professional looking <strong>spatial</strong> visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Load required libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(openintro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: airports
+Loading required package: cherryblossom
+Loading required package: usdata</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(gplots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'gplots'
 
+The following object is masked from 'package:stats':
 
-<p>Use this file to generate a professional looking <strong>spatial</strong> visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</p>
+    lowess</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">library</span>(mosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'mosaic':
+  method                           from   
+  fortify.SpatialPolygonsDataFrame ggplot2
+
+The 'mosaic' package masks several functions from core packages in order to add 
+additional features.  The original behavior of these functions should not be affected by this.
+
+Attaching package: 'mosaic'
+
+The following object is masked from 'package:Matrix':
+
+    mean
+
+The following object is masked from 'package:openintro':
+
+    dotPlot
+
+The following objects are masked from 'package:dplyr':
+
+    count, do, tally
+
+The following object is masked from 'package:purrr':
+
+    cross
+
+The following object is masked from 'package:ggplot2':
+
+    stat
+
+The following objects are masked from 'package:stats':
+
+    binom.test, cor, cor.test, cov, fivenum, IQR, median, prop.test,
+    quantile, sd, t.test, var
+
+The following objects are masked from 'package:base':
+
+    max, mean, min, prod, range, sample, sum</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.13.0, GDAL 3.10.1, PROJ 9.5.1; sf_use_s2() is TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(maps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'maps'
+
+The following object is masked from 'package:purrr':
+
+    map</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">library</span>(socviz)</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="fu">library</span>(tidytuesdayR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Ashlyn's favorite Seattle places - Used Google Maps to get coordinates</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="co"># https://support.google.com/maps/answer/18539?hl=en&amp;co=GENIE.Platform%3DDesktop</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>favorite_sea <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb14-4"><a href="#cb14-4"></a>  <span class="sc">~</span>place, <span class="sc">~</span>long, <span class="sc">~</span>lat, <span class="sc">~</span>feeling, </span>
+<span id="cb14-5"><a href="#cb14-5"></a>  <span class="st">"University of Washington"</span>, <span class="sc">-</span><span class="fl">122.30167316935625</span>, <span class="fl">47.65264311999513</span>, <span class="st">"love"</span>,  </span>
+<span id="cb14-6"><a href="#cb14-6"></a>  <span class="st">"Boba Up"</span>, <span class="sc">-</span><span class="fl">122.31331782280895</span>, <span class="fl">47.658621036490075</span>, <span class="st">"like"</span>,</span>
+<span id="cb14-7"><a href="#cb14-7"></a>  <span class="st">"Bamboo Sushi"</span>,<span class="sc">-</span><span class="fl">122.29799860004024</span>, <span class="fl">47.662507092752705</span>, <span class="st">"love"</span>,</span>
+<span id="cb14-8"><a href="#cb14-8"></a>  <span class="st">"Laurelhurst Beach Club"</span>, <span class="sc">-</span><span class="fl">122.2723941228106</span>, <span class="fl">47.656492670409385</span>,  <span class="st">"ehh"</span>, </span>
+<span id="cb14-9"><a href="#cb14-9"></a>  <span class="st">"Trophy Cupcakes"</span>, <span class="sc">-</span><span class="fl">122.30133589785136</span>, <span class="fl">47.66762053980776</span>, <span class="st">"like"</span>, </span>
+<span id="cb14-10"><a href="#cb14-10"></a>  <span class="st">"Molly Moon's Icecream"</span>, <span class="sc">-</span><span class="fl">122.29917938418802</span>, <span class="fl">47.66493277813059</span>, <span class="st">"ehh"</span>,</span>
+<span id="cb14-11"><a href="#cb14-11"></a>  <span class="st">"Trader Joes"</span>, <span class="sc">-</span><span class="fl">122.32158243432424</span>, <span class="fl">47.66624291467835</span>, <span class="st">"like"</span>,</span>
+<span id="cb14-12"><a href="#cb14-12"></a>  <span class="st">"Center for Urban Horticulture"</span>, <span class="sc">-</span><span class="fl">122.29062343514943</span>, <span class="fl">47.65852236756359</span>, <span class="st">"ehh"</span>, </span>
+<span id="cb14-13"><a href="#cb14-13"></a>  <span class="st">"Magnuson Athletic Club"</span>, <span class="sc">-</span><span class="fl">122.2629246841705</span>, <span class="fl">47.68767268086636</span>, <span class="st">"like"</span>, </span>
+<span id="cb14-14"><a href="#cb14-14"></a>  <span class="st">"Starbucks"</span>, <span class="sc">-</span><span class="fl">122.29978051142461</span>, <span class="fl">47.662630550998784</span>, <span class="st">"love"</span>,</span>
+<span id="cb14-15"><a href="#cb14-15"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Assuming "long" and "lat" are longitude and latitude, respectively</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-90fb6b2988c4bfe9da8c" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-90fb6b2988c4bfe9da8c">{"x":{"options":{"minZoom":9,"maxZoom":20,"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircles","args":[[47.65264311999513,47.65862103649008,47.6625070927527,47.65649267040938,47.66762053980776,47.66493277813059,47.66624291467835,47.65852236756359,47.68767268086636,47.66263055099878],[-122.3016731693562,-122.313317822809,-122.2979986000402,-122.2723941228106,-122.3013358978514,-122.299179384188,-122.3215824343242,-122.2906234351494,-122.2629246841705,-122.2997805114246],10,null,null,{"interactive":true,"className":"","stroke":true,"color":["#000000","#0000FF","#000000","#FF0000","#0000FF","#FF0000","#0000FF","#FF0000","#0000FF","#000000"],"weight":8,"opacity":15,"fill":true,"fillColor":["#000000","#0000FF","#000000","#FF0000","#0000FF","#FF0000","#0000FF","#FF0000","#0000FF","#000000"],"fillOpacity":0.2},null,null,["University of Washington","Boba Up","Bamboo Sushi","Laurelhurst Beach Club","Trophy Cupcakes","Molly Moon's Icecream","Trader Joes","Center for Urban Horticulture","Magnuson Athletic Club","Starbucks"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]},{"method":"addLegend","args":[{"colors":["#FF0000","#0000FF","#000000"],"labels":["ehh","like","love"],"na_color":null,"na_label":"NA","opacity":0.5,"position":"bottomright","type":"factor","title":"How I feel about them?","extra":null,"layerId":null,"className":"info legend","group":null}]}],"flyTo":[[47.67078857516927,-122.2890810062124],13,[]],"limits":{"lat":[47.65264311999513,47.68767268086636],"lng":[-122.3215824343242,-122.2629246841705]}},"evals":[],"jsHooks":[]}</script><p>A map of Seattle, Washington with highlighted locations of varying significance by Ashlyn R.</p>
+</div>
+</div>
 
 
 <!-- -->
 
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -888,27 +1053,90 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../bw/bw-quad.html" class="pagination-link" aria-label="Quadvariate Viz">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quadvariate Viz</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../ica/ica-uni.html" class="pagination-link" aria-label="Univariate Viz">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../exam/exam-1.html" class="pagination-link" aria-label="Exam 1">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exam 1</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "Spatial Viz"</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co">---</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a>Use this file to generate a professional looking **spatial** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">---</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="an">title:</span><span class="co"> "Spatial Viz"</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="co">---</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a></span>
+<span id="cb16-5"><a href="#cb16-5"></a>Use this file to generate a professional looking **spatial** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</span>
+<span id="cb16-6"><a href="#cb16-6"></a></span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="in">```{r}</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a><span class="co"># Load required libraries</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb16-12"><a href="#cb16-12"></a><span class="fu">library</span>(openintro)</span>
+<span id="cb16-13"><a href="#cb16-13"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb16-14"><a href="#cb16-14"></a><span class="fu">library</span>(gplots)</span>
+<span id="cb16-15"><a href="#cb16-15"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb16-16"><a href="#cb16-16"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb16-17"><a href="#cb16-17"></a><span class="fu">library</span>(sf)</span>
+<span id="cb16-18"><a href="#cb16-18"></a><span class="fu">library</span>(maps)</span>
+<span id="cb16-19"><a href="#cb16-19"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb16-20"><a href="#cb16-20"></a><span class="fu">library</span>(socviz)</span>
+<span id="cb16-21"><a href="#cb16-21"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb16-22"><a href="#cb16-22"></a><span class="fu">library</span>(tidytuesdayR)</span>
+<span id="cb16-23"><a href="#cb16-23"></a></span>
+<span id="cb16-24"><a href="#cb16-24"></a><span class="in">```</span></span>
+<span id="cb16-25"><a href="#cb16-25"></a></span>
+<span id="cb16-26"><a href="#cb16-26"></a></span>
+<span id="cb16-29"><a href="#cb16-29"></a><span class="in">```{r}</span></span>
+<span id="cb16-30"><a href="#cb16-30"></a><span class="co"># Ashlyn's favorite Seattle places - Used Google Maps to get coordinates</span></span>
+<span id="cb16-31"><a href="#cb16-31"></a><span class="co"># https://support.google.com/maps/answer/18539?hl=en&amp;co=GENIE.Platform%3DDesktop</span></span>
+<span id="cb16-32"><a href="#cb16-32"></a>favorite_sea <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb16-33"><a href="#cb16-33"></a>  <span class="sc">~</span>place, <span class="sc">~</span>long, <span class="sc">~</span>lat, <span class="sc">~</span>feeling, </span>
+<span id="cb16-34"><a href="#cb16-34"></a>  <span class="st">"University of Washington"</span>, <span class="sc">-</span><span class="fl">122.30167316935625</span>, <span class="fl">47.65264311999513</span>, <span class="st">"love"</span>,  </span>
+<span id="cb16-35"><a href="#cb16-35"></a>  <span class="st">"Boba Up"</span>, <span class="sc">-</span><span class="fl">122.31331782280895</span>, <span class="fl">47.658621036490075</span>, <span class="st">"like"</span>,</span>
+<span id="cb16-36"><a href="#cb16-36"></a>  <span class="st">"Bamboo Sushi"</span>,<span class="sc">-</span><span class="fl">122.29799860004024</span>, <span class="fl">47.662507092752705</span>, <span class="st">"love"</span>,</span>
+<span id="cb16-37"><a href="#cb16-37"></a>  <span class="st">"Laurelhurst Beach Club"</span>, <span class="sc">-</span><span class="fl">122.2723941228106</span>, <span class="fl">47.656492670409385</span>,  <span class="st">"ehh"</span>, </span>
+<span id="cb16-38"><a href="#cb16-38"></a>  <span class="st">"Trophy Cupcakes"</span>, <span class="sc">-</span><span class="fl">122.30133589785136</span>, <span class="fl">47.66762053980776</span>, <span class="st">"like"</span>, </span>
+<span id="cb16-39"><a href="#cb16-39"></a>  <span class="st">"Molly Moon's Icecream"</span>, <span class="sc">-</span><span class="fl">122.29917938418802</span>, <span class="fl">47.66493277813059</span>, <span class="st">"ehh"</span>,</span>
+<span id="cb16-40"><a href="#cb16-40"></a>  <span class="st">"Trader Joes"</span>, <span class="sc">-</span><span class="fl">122.32158243432424</span>, <span class="fl">47.66624291467835</span>, <span class="st">"like"</span>,</span>
+<span id="cb16-41"><a href="#cb16-41"></a>  <span class="st">"Center for Urban Horticulture"</span>, <span class="sc">-</span><span class="fl">122.29062343514943</span>, <span class="fl">47.65852236756359</span>, <span class="st">"ehh"</span>, </span>
+<span id="cb16-42"><a href="#cb16-42"></a>  <span class="st">"Magnuson Athletic Club"</span>, <span class="sc">-</span><span class="fl">122.2629246841705</span>, <span class="fl">47.68767268086636</span>, <span class="st">"like"</span>, </span>
+<span id="cb16-43"><a href="#cb16-43"></a>  <span class="st">"Starbucks"</span>, <span class="sc">-</span><span class="fl">122.29978051142461</span>, <span class="fl">47.662630550998784</span>, <span class="st">"love"</span>,</span>
+<span id="cb16-44"><a href="#cb16-44"></a>)</span>
+<span id="cb16-45"><a href="#cb16-45"></a></span>
+<span id="cb16-46"><a href="#cb16-46"></a><span class="in">```</span></span>
+<span id="cb16-47"><a href="#cb16-47"></a></span>
+<span id="cb16-48"><a href="#cb16-48"></a></span>
+<span id="cb16-51"><a href="#cb16-51"></a><span class="in">```{r}</span></span>
+<span id="cb16-52"><a href="#cb16-52"></a><span class="co">#| echo: false</span></span>
+<span id="cb16-53"><a href="#cb16-53"></a><span class="co">#| fig-cap: "A map of Seattle, Washington with highlighted locations of varying significance by Ashlyn R."</span></span>
+<span id="cb16-54"><a href="#cb16-54"></a><span class="co">#| fig-alt: "A map that zooms in and focuses on an area of Seattle, Washington, United States. The map has points of three different colors which denote the feeling that is associated with those locations. The points are labelled with the name of what they represent. The location data came from: https://support.google.com/maps/answer/18539?hl=en&amp;co=GENIE.Platform%3DDesktop."</span></span>
+<span id="cb16-55"><a href="#cb16-55"></a></span>
+<span id="cb16-56"><a href="#cb16-56"></a></span>
+<span id="cb16-57"><a href="#cb16-57"></a>custom_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"black"</span>)</span>
+<span id="cb16-58"><a href="#cb16-58"></a>factpal <span class="ot">&lt;-</span> <span class="fu">colorFactor</span>(<span class="at">palette =</span> custom_colors, favorite_sea<span class="sc">$</span>feeling)</span>
+<span id="cb16-59"><a href="#cb16-59"></a></span>
+<span id="cb16-60"><a href="#cb16-60"></a><span class="fu">leaflet</span>(<span class="at">data =</span> favorite_sea, </span>
+<span id="cb16-61"><a href="#cb16-61"></a>        <span class="at">options =</span> <span class="fu">leafletOptions</span>(<span class="at">minZoom =</span> <span class="dv">9</span>, <span class="at">maxZoom =</span> <span class="dv">20</span>)</span>
+<span id="cb16-62"><a href="#cb16-62"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb16-63"><a href="#cb16-63"></a>  </span>
+<span id="cb16-64"><a href="#cb16-64"></a><span class="fu">addTiles</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb16-65"><a href="#cb16-65"></a><span class="fu">flyTo</span>(</span>
+<span id="cb16-66"><a href="#cb16-66"></a>  <span class="at">lng =</span> <span class="fu">mean</span>(favorite_sea<span class="sc">$</span>long) <span class="sc">+</span><span class="fl">0.007</span>,</span>
+<span id="cb16-67"><a href="#cb16-67"></a>  <span class="at">lat =</span> <span class="fu">mean</span>(favorite_sea<span class="sc">$</span>lat) <span class="sc">+</span><span class="fl">0.007</span>,</span>
+<span id="cb16-68"><a href="#cb16-68"></a>  <span class="at">zoom =</span> <span class="dv">13</span></span>
+<span id="cb16-69"><a href="#cb16-69"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb16-70"><a href="#cb16-70"></a>  </span>
+<span id="cb16-71"><a href="#cb16-71"></a>  <span class="fu">addCircles</span>(<span class="at">label=</span> <span class="sc">~</span>place, <span class="at">weight =</span> <span class="dv">8</span>, <span class="at">color =</span> <span class="sc">~</span><span class="fu">factpal</span>(feeling), <span class="at">opacity =</span> <span class="dv">15</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-72"><a href="#cb16-72"></a>  </span>
+<span id="cb16-73"><a href="#cb16-73"></a>  <span class="fu">addLegend</span>(<span class="st">"bottomright"</span>, <span class="at">pal =</span> factpal, <span class="at">values =</span> <span class="sc">~</span>feeling, <span class="at">title =</span> <span class="st">"How I feel about them?"</span>)</span>
+<span id="cb16-74"><a href="#cb16-74"></a> </span>
+<span id="cb16-75"><a href="#cb16-75"></a></span>
+<span id="cb16-76"><a href="#cb16-76"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-
 
 
 
