@@ -14,7 +14,7 @@ library(sf)
 library(mosaic)
 
 boundaries <- read_sf("C:\\Users\\ashry\\OneDrive\\Documents\\GitHub\\portfolio-AshERyan21\\bw\\data\\Washington_School_District_Boundaries.shp")
-data <- read_csv("C:\\Users\\ashry\\OneDrive\\Documents\\GitHub\\portfolio-AshERyan21\\bw\\data\\Report_Card_WaKids_2023-24_School_Year_20250403.csv")
+data <- read_csv("C:\\Users\\ashry\\OneDrive\\Documents\\GitHub\\portfolio-AshERyan21\\bw\\data\\Report_Card_WaKids_2023-24_School_Year_20250418.csv")
 
 ```
 
