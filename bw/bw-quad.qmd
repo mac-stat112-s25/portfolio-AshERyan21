@@ -21,11 +21,10 @@ woll <- weather |>
 
 ```{r}
 #| echo: false
-#| fig-cap: "A scatter plot representing the relationships in the temperature, in Celsius, at 9am and 3pm in three locations in Australia divided by whether or not there was rain that day by Ashlyn R."
 #| fig-alt: " A scatter plot with temperature at 9am in celsius on the x axis and temperature at 3pm in celsius on the y axis. The data points are colored by the location that they are from: Hobart, Uluru, and Wollongong, and the data points are shaped by whether or not it rained that day. It appears that Uluru sees the greatest variation in temperatures but generally also has higher temperatures in general. Hobart sees the lowest temperatures in general. All the locations see trends in that higher morning temperatures see higher afternoon temperatures. The data from which this data was sourced can be found at: https://mac-stat.github.io/data/weather_3_locations.csv."
 
 ggplot(weather, aes(y = temp3pm, x = temp9am, color = location, shape = raintoday)) + 
   geom_point() +
-  labs( x = "Temperature at 9am (Celsius)", y= "Temperature at 3pm (Celsius)", color = "Location", shape = "Rain Today?", title = "Temperature Trends in Three Australian Cities") +
+  labs( x = "Temperature at 9am (Celsius)", y= "Temperature at 3pm (Celsius)", color = "Location", shape = "Rain Today?", title = "Temperature Trends in Three Australian Cities", caption = "A scatter plot representing the relationships in the temperature, in Celsius, at 9am and 3pm in three locations in Australia divided by whether or not there was rain that day by Ashlyn R.") +
   theme_classic()
 ```

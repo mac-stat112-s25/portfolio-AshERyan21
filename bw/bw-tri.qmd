@@ -38,8 +38,10 @@ daily_births <- Birthdays |>
 
 ```{r}
 #| echo: false
-#| fig-cap: "A scatter plot of births in the United States from 1969 to 1988 broken down by day of the week by Ashlyn R."
 #| fig-alt: "A scatter plot with year on the x- axis from 1969 to 1988 and Births on the y axis ranging from 6,000 to a little over 12,000. The scatter plot is colored by day of the week, and it appears that sunday and saturday are at the lower end of the spectrum with wednesday, thursday and friday seeing the highest number of births. Over time the entire data set trends weakly positively up. The data was sourced from: Birthdays."
+#| fig-cap: "A scatter plot of births in the United States from 1969 to 1988 broken down by day of the week by Ashlyn R."
+#| fig-height: 3
+#| fig-width: 3
 
 
 ggplot(daily_births, aes(y = births, x = date, color = day_of_week)) +
