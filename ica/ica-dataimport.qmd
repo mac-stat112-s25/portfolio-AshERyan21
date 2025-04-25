@@ -56,7 +56,7 @@ Putting this together, use `read_csv()` with the appropriate absolute file path 
 
 ```{r}
 library(tidyverse)
-imdb_messy <- read_csv("C:\\Users\\ashry\\OneDrive\\Documents\\GitHub\\portfolio-AshERyan21\\imdb_5000_messy.csv")
+imdb_messy <- read_csv("C:\\Users\\ashry\\portfolio-AshERyan21\\imdb_5000_messy.csv")
 ```
 
 #### Part b {.unnumbered}

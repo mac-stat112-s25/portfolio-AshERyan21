@@ -7,7 +7,7 @@ execute:
   error: false
 ---
 
-# Solo Project {-}
+# Solo Project {.unnumbered}
 
 For this solo project I wanted to explore my home state of Washington.
 It is a large state both in population and geography providing the potential for interesting comparisons and differentiation.
@@ -19,8 +19,8 @@ library(tidyverse)
 library(sf)
 library(mosaic)
 
-boundaries <- read_sf("C:\\Users\\ashry\\OneDrive\\Documents\\GitHub\\portfolio-AshERyan21\\bw\\data\\Washington_School_District_Boundaries.shp")
-data <- read_csv("C:\\Users\\ashry\\OneDrive\\Documents\\GitHub\\portfolio-AshERyan21\\bw\\data\\Report_Card_WaKids_2023-24_School_Year_20250418.csv")
+boundaries <- read_sf("C:\\Users\\ashry\\portfolio-AshERyan21\\bw\\data\\Washington_School_District_Boundaries.shp")
+data <- read_csv("C:\\Users\\ashry\\portfolio-AshERyan21\\bw\\data\\Report_Card_WaKids_2023-24_School_Year_20250418.csv")
 
 ```
 
@@ -58,7 +58,6 @@ LOGFullDATA <- FullDATA |>
   mutate(PTR = log(total_ready))
 ```
 
-
 ```{r}
 #| fig-height: 10
 #| fig-width: 10
@@ -77,6 +76,7 @@ We see in this graph that there is a very large range of readiness.
 The hotspot areas appear to be spread throughout the state; however, as a resident of the state I know that those are the areas with cities/ larger population centers.
 
 Lastly, due to the range within the data I created a log scale of the percent total ready, potentially allowing for a better range analysis.
+
 ```{r}
 #| fig-height: 10
 #| fig-width: 10
