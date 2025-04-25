@@ -1,0 +1,15 @@
+---
+execute: 
+  echo: false
+fig-env: 'figure'
+fig-pos: 'h'
+fig-align: center
+code-fold: true
+format: html
+---
+
+# Visualizations {-}
+
+My summary of the visualizations learned in Introduction to Data Science, Spring 2025 at Macalester College:
+
+<img src="exam-1-sg.jpg" alt="An image of the various topics we have covered in class so far"/>

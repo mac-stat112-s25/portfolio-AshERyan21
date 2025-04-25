@@ -1,5 +1,40 @@
 ---
-title: "Bivariate Viz"
+execute: 
+  echo: false
+  warning: false
+  error: false
 ---
 
-Use this file to generate a professional looking **bivariate** visualization.  The visualization will not perfect the first time but you are expected to improve it throughout the semester especially after covering advanced topics such as effective viz.
+# Bivariate Viz {-}
+
+
+```{r}
+library(tidyverse)
+```
+
+
+
+```{r}
+elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv")
+
+```
+
+
+
+```{r}
+#| fig-height: 8
+#| fig-width: 12
+#| fig-alt: >
+#|  A three bar, bar chart representing the historical leaning by party by county across the United States. Each bar is further borken up to reflect the
+#|  proportion of the party who won the 2020 election. Overall repbulicans won the greatest number of counties in the 2020 election. Red has the highest
+#|  relative count of county, blue has the lowest. The data from which this data was sourced can be found at 
+#|  mac-stat.github.io/data/election_2020_county.csv.
+
+
+ggplot(elections, aes(x = historical, fill = winner_20)) +
+  geom_bar() +
+  theme_classic() +
+  labs(x = "Historical Leaning (Party)", y = "Number of Counties", fill = "Winner in 2020 Election", title = "2020 Election Outcome By Historical Leaning", caption = "A bar chart representing the Historical party leaning of counties acorss the United States and the party who won the 2020 election by Ashlyn R with data from class GitHub.")
+  
+```
+

@@ -1,0 +1,135 @@
+---
+execute: 
+  echo: false
+  warning: false
+  error: false
+fig-env: 'figure'
+fig-pos: 'h'
+fig-align: center
+format: html
+---
+
+# Exam 1 {-}
+
+This exam explores the Food Consumption and CO2 Emissions dataset from Week 8 of 2020 in TidyTuesday. It contains the varaibles country, food_category, consumption, and co2_emmission. 
+
+```{r}
+#This loads the necessary packages to be able to execute what we want to do. 
+
+library(tidytuesdayR)
+library(tidyverse)
+```
+
+
+```{r}
+#This pulls the data that we want from tidy tuesday.
+
+tuesdata <- tt_load('2020-02-18')
+fc <- tuesdata$food_consumption
+```
+
+Grand Research Question: What does the consumption of each food category in each country look like?
+
+
+```{r}
+#To begin to understand the data we are looking at, it is helpful to look at both the different characteristics of the variables as well as how large the dataset is. 
+
+str(fc)
+dim(fc)
+```
+
+```{r}
+#It is also helpful to look at a particular subset of the dataset -- the first 22 and the last 22 rows. 
+
+head(fc,22)
+tail(fc,22)
+```
+From these initial steps we learn that the units of observation are country by food, with 130 countries and 11 different food categories.
+
+
+Our research question contains three variables in question. Before we understand the big picture question we need to look at each one individually to begin to understand how best to visualize it.
+
+First to understand consumption, a numerical variable. 
+```{r}
+ggplot(fc, aes(x = consumption)) + 
+  geom_density(alpha = 0.5) + 
+  labs(x = "Consumption (kg/person/year)") + 
+  theme_classic()    
+```
+
+The density graph above details consumption, showcasing that consumption varies greatly but spikes closer to zero but with some outliers. 
+
+Next we want to understand food category, a categorical variable. 
+
+```{r}
+#| fig-width: 11
+ggplot(fc, aes(x = food_category)) +
+  geom_bar()
+```
+The graph above shows that we have eleven categories and each appears the same number of times, likely 130. From the graph above not much is learned but for there are likley few, if no, NAs.
+
+Our last variable is country, another categorical variable. We have 130 countries in this dataset and no latitude or longitudes. There is not really a good visualization to represent countries. 
+
+Now we begin to understand these variables together, in pieces. In pairs understanding overall food consumption and each food category and each country.
+
+```{r}
+
+ggplot(fc, aes(y = consumption, x = food_category)) +
+  geom_boxplot()
+```
+
+```{r}
+#| fig-height: 11
+#| fig-width: 22
+
+#Starting with understanding consumption and food_category a numerical and a categorical variable. For this visualization I chose to do a sort of bar chart with the axis set not by count but by another category. 
+
+ggplot(fc, aes(x = consumption, y = food_category)) +
+  geom_col()
+
+```
+From the graph above we learn that consumption of a fair of the food categories is really high and for the others it is all about the same. Milk and wheat are the two biggest outliers, by a lot. 
+
+
+Now to understand consumption by country - a challenge due to the number of countries included in the data set.
+```{r}
+#| fig-height: 55
+#| fig-width: 11
+
+ggplot(fc, aes(x = consumption)) + 
+  geom_density() +
+  labs(x = "Consumption (kg/person/year)") + 
+  facet_wrap(~country, ncol = 5) +
+  theme_classic()
+```
+There are a lot of density plots included in the above! One big takeaway is that the majority of the countries seem to have similar consumption patterns with consumption spiking just above 0, from 0 to 100, and then there are some outliers towards the tail. 
+
+
+
+Now that we understand a bit more about the various variables in play we can attempt to begin to answer the grand research question. We have two categorical variables that have many categories. To tackle this, it will be messy. 
+
+I think that the best way to visualize this is to break consumption down by food category and then by country. 
+```{r}
+#| fig-height: 55
+#| fig-width: 11
+#| fig-cap: "Bar Charts of Food Consumption by Food Category For Each Country."
+#| fig-alt: "130 bar charts of food consumption by each food category, with the food category on the y-axis and consumption on the x-axis. The bars are all black and it is a fairly noisy set of graphs. General trends show that wheat and dairy sees the highest levels of consumption, with consumption of the other food categories ranging."
+
+
+ggplot(fc, aes(y = food_category, x = consumption)) + 
+  geom_col() + 
+  labs(x = "Consumption (kg/person/year)", title = "Food Consumption by Food Category by Country") + 
+  facet_wrap(~country, ncol = 5)
+```
+
+The above is not easy to see big trends across countries, or learn much at quick glance. However, one can begin to understand general trends when zooming in and looking around. 
+
+Effective visualizations are made up of many pieces and components, which can range from: alternative text, captions, color-blind friendly color schemes to axis with units. The visualization above contains: no color, tells a representative and unbiased story, has axis labeled with units and a title, as well as a caption and alternative text.  
+
+
+From these visualizations we learn that milk and wheat are two of the food categories that are consumed in the greatest amounts. Additionally, that there are some countries with consumption levels a lot higher than others. Questions that I would like to further explore would be: how does different countries vary in their CO2 emissions and how does CO2 emissions vary by food category. 
+
+
+
+
+

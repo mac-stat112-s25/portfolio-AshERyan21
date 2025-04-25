@@ -1,0 +1,167 @@
+---
+number-sections: true
+execute: 
+  echo: false
+  warning: false
+  error: false
+fig-env: 'figure'
+fig-pos: 'h'
+fig-align: center
+code-fold: false
+---
+
+# Exam 2 {-}
+
+```{r}
+library(tidytuesdayR)
+library(tidyverse)
+library(rnaturalearth)
+library(sf)
+```
+
+```{r}
+tuesdata <- tt_load('2020-02-18')
+fc <- tuesdata$food_consumption
+```
+
+```{r}
+str(fc)
+```
+
+```{r}
+head(fc, 22)
+```
+
+
+```{r}
+fc|>
+  distinct(food_category)
+```
+```{r}
+fcc <- fc |>
+  mutate(food_category = fct_recode(food_category, 
+                                    "Lamb" = "Lamb & Goat",
+                                    "Milk" = "Milk - inc. cheese",
+                                    "Wheat" = "Wheat and Wheat Products",
+                                    "Nuts" = "Nuts inc. Peanut Butter"))
+```
+
+```{r}
+fcc |>
+  distinct(food_category)
+```
+
+Research Question 1: Which 5 countries consume the most food are?
+(Show the answer as a 2-column table and as a graph, sort based on consumption)
+
+```{r}
+tc <- fcc |>
+  group_by(country) |>
+  summarize(total = sum(consumption)) |>
+  arrange(desc(total)) |>
+  head(5)
+```
+
+
+```{r}
+tc
+```
+```{r}
+ggplot(tc, aes(x = country, y = total)) +
+  geom_col()
+```
+
+Research Question 2: Which top 5 countries consume each food are?
+```{r}
+fcc2 <- fcc |>
+  select(country, food_category, consumption) |>
+  group_by(food_category) |>
+  slice_max(consumption, n= 5)
+  
+fcc2
+```
+
+```{r}
+#| fig-height: 65
+#| fig-width: 15
+fcc2|>
+  ggplot(aes(x = consumption, y = country)) +
+  geom_col() +
+  facet_wrap(~ food_category, ncol = 1)
+```
+Research Question 3: What does the consumption of each food look like?
+
+Viz: Attempt 1
+```{r}
+ne_countries(returnclass = "sf") |>
+  select(name, geometry) |>
+  left_join(fcc |> select(-co2_emmission),
+            join_by(name == country)) |>
+  ggplot()+
+  geom_sf(aes(fill = consumption)) +
+  facet_wrap(~food_category) +
+  theme(legend.position= "bottom")
+```
+Countries with Missing Consumption Data
+```{r}
+
+```
+
+
+Viz: Attempt 2
+```{r}
+#| fig-height: 15
+#| fig-width: 15
+ne_countries(returnclass = "sf") |>
+  select(name, geometry) |>
+  mutate(name = ifelse(name == "United States of America", "USA", name)) |>
+  mutate(name = ifelse(name == "Bosnia and Herz.", "Bosnia and Herzegovina", name)) |>
+  mutate(name = ifelse(name == "Czechia", "Czech Republic", name)) |>
+  mutate(name = ifelse(name == "Taiwan", "Taiwan. ROC", name)) |>
+  left_join(fcc |> select(-co2_emmission),
+            join_by(name == country)) |>
+  pivot_wider(names_from = food_category,
+              values_from = consumption) |>
+  select(-"NA") |>
+  pivot_longer(cols = c(-name, -geometry),
+               names_to = "food_category",
+               values_to = "consumption") |>
+  ggplot()+
+  geom_sf(aes(fill = consumption)) +
+  facet_wrap(~food_category) +
+  theme(legend.position = "bottom")
+
+```
+Food Consumption Statistics
+```{r}
+#| fig-height: 15
+#| fig-width: 15
+ne_countries(returnclass = "sf") |>
+  select(name, geometry) |>
+  mutate(name = ifelse(name == "United States of America", "USA", name)) |>
+  mutate(name = ifelse(name == "Bosnia and Herz.", "Bosnia and Herzegovina", name)) |>
+  mutate(name = ifelse(name == "Czechia", "Czech Republic", name)) |>
+  mutate(name = ifelse(name == "Taiwan", "Taiwan. ROC", name)) |>
+  left_join(
+    fcc |> 
+      select(-co2_emmission) |>
+      group_by(food_category) |>
+      mutate(consumption = (consumption - mean(consumption))/sd(consumption)),
+    join_by(name == country)) |>
+  pivot_wider(names_from = food_category,
+              values_from = consumption) |>
+  select(-"NA") |>
+  pivot_longer(cols = c(-name, -geometry),
+               names_to = "food_category",
+               values_to = "consumption") |>
+  ggplot()+
+  geom_sf(aes(fill = consumption)) +
+  facet_wrap(~food_category) +
+  theme(legend.position = "bottom")
+
+```
+
+
+
+
+
