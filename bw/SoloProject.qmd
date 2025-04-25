@@ -1,0 +1,97 @@
+---
+editor: visual
+format: html
+execute: 
+  echo: false
+  warning: false
+  error: false
+---
+
+# Solo Project {-}
+
+For this solo project I wanted to explore my home state of Washington.
+It is a large state both in population and geography providing the potential for interesting comparisons and differentiation.
+Education data in Washington State is also incredibly prevalent and well characterized.
+Thus I explored some of the different state and district websites.
+
+```{r}
+library(tidyverse)
+library(sf)
+library(mosaic)
+
+boundaries <- read_sf("C:\\Users\\ashry\\OneDrive\\Documents\\GitHub\\portfolio-AshERyan21\\bw\\data\\Washington_School_District_Boundaries.shp")
+data <- read_csv("C:\\Users\\ashry\\OneDrive\\Documents\\GitHub\\portfolio-AshERyan21\\bw\\data\\Report_Card_WaKids_2023-24_School_Year_20250418.csv")
+
+```
+
+I found a data set detailing the school districts in Washington as well as a data set detailing kindergarten readiness scores by district, demographic, and topic.
+
+```{r}
+dim(data)
+head(data, 3)
+tail(data, 3)
+```
+
+The data includes a lot of information and metrics regarding the different metrics of readiness, as well as subcategory breakdowns.
+
+```{r}
+Data_Totals <- data |>
+  filter(Measure == "NumberofDomainsReadyforKindergarten") |>
+  group_by(DistrictName)|>
+  summarize(total_ready = sum(Percent, na.rm = TRUE))
+
+```
+
+For my exploration I only really wanted to look at the number of domains ready for Kindergarten, and look at the sums of those percentages.
+Therefor, I filtered by data to only include those in, "Number of Domains Ready for Kindergarten."
+
+```{r}
+#in boundaries its LEAName, Data_Totals its DistrictName
+FullDATA <- boundaries |>
+  left_join(Data_Totals, join_by(LEAName == DistrictName))
+```
+
+Then I joined the data with the necessary boundaries.
+
+```{r}
+LOGFullDATA <- FullDATA |>
+  mutate(PTR = log(total_ready))
+```
+
+
+```{r}
+#| fig-height: 10
+#| fig-width: 10
+#| fig-cap: >
+#|  The percent total ready for Kindergarten across all categories with yellow representing the highest and purple the lowest. The grey areas are NA.   
+#|  Created by Ashlyn R, Macalester College Introduction to Data Science, Spring 2025. Data from Washington Department of Education.
+ggplot() +
+  geom_sf(data = LOGFullDATA, aes(fill= total_ready), color = "white") +
+  scale_fill_viridis_c(option = "viridis", direction = 1) +
+   labs(title = "Washington State By County and Kindergarten Readiness", fill = "Percent Total Ready") +
+  theme_map()
+```
+
+The state map above represents the total percent of all categories combined by state for readiness for kindergarten.
+We see in this graph that there is a very large range of readiness.
+The hotspot areas appear to be spread throughout the state; however, as a resident of the state I know that those are the areas with cities/ larger population centers.
+
+Lastly, due to the range within the data I created a log scale of the percent total ready, potentially allowing for a better range analysis.
+```{r}
+#| fig-height: 10
+#| fig-width: 10
+#| fig-cap: >
+#|   The percent total ready for Kindergarten across all categories with yellow representing the highest and purple the lowest. The grey areas are NA.
+#|   Created by Ashlyn R, Macalester College Introduction to Data Science, Spring 2025. Data from Washington Department of Education.
+
+ggplot() +
+  geom_sf(data = LOGFullDATA, aes(fill= PTR), color = "white") +
+  scale_fill_viridis_c(option = "viridis", direction = 1) +
+  labs(title = "Washington State By County and Kindergarten Readiness (Logged)", fill = "Percent Total Ready (Logged)") +
+  theme_map()
+```
+
+By putting the total ready on a log scale, the hotspots remain highlighted, however, the variation seen throughout the rest of the state is easier to be seen.
+I think that this shows that throughout Washington readiness for kindergarted really varies.
+The downside of the log scale map is that more areas do not have data: are grey, as those are the areas either with zeros/ and, or NAS.
+This does takeaway some of what can be learned from the data.

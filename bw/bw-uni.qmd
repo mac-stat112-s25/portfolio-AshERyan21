@@ -1,5 +1,42 @@
 ---
-title: "Univariate Viz"
+format: html
+execute: 
+  echo: false
+  warning: false
+  error: false
 ---
 
-Use this file to generate a professional looking **univariate** visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+# Univariate Viz {-}
+
+
+
+```{r}
+# Load the package
+library(tidyverse)
+```
+
+
+```{r}
+# Import data
+hikes <- read.csv("https://mac-stat.github.io/data/high_peaks.csv")
+
+
+```
+
+
+```{r}
+#| fig-height: 10
+#| fig-width: 10
+#| fig-alt: >
+#|  A histogram with 9 bins representing the various elevation of hikes and the number of hikes that happen at that elevation. The distribution is right
+#|  skewed and unimodal. The most hikes happen at around 4000 feet. The data from which this data was sourced can be found at:
+#|  https://mac-stat.github.io/data/high_peaks.csv.
+
+
+
+
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(fill = "blue", color = "white", binwidth = 200) +
+  theme_classic()+
+  labs(x = "Elevation of Hike (feet)", y = "Number of Hikes", title = "Distribution of the Elevation of Hikes in New York", caption = "Histogram of the elevation of hikes in New York State by Ashlyn R. created in Macalester Introduction to Data Science 112, Spring 2025, with data from class GitHub.")
+```

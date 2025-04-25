@@ -1,5 +1,80 @@
 ---
-title: "Spatial Viz"
+format: html
+execute: 
+  echo: false
+  warning: false
+  error: false
 ---
 
-Use this file to generate a professional looking **spatial** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+# Spatial Viz {-}
+
+```{r}
+# Load required libraries
+library(tidyverse)
+library(openintro)
+library(leaflet)
+library(gplots)
+library(rnaturalearth)
+library(mosaic)
+library(sf)
+library(maps)
+library(RColorBrewer)
+library(socviz)
+library(dplyr)
+library(tidytuesdayR)
+
+```
+
+
+```{r}
+# Ashlyn's favorite Seattle places - Used Google Maps to get coordinates
+# https://support.google.com/maps/answer/18539?hl=en&co=GENIE.Platform%3DDesktop
+favorite_sea <- tribble(
+  ~place, ~long, ~lat, ~feeling, 
+  "University of Washington", -122.30167316935625, 47.65264311999513, "love",  
+  "Boba Up", -122.31331782280895, 47.658621036490075, "like",
+  "Bamboo Sushi",-122.29799860004024, 47.662507092752705, "love",
+  "Laurelhurst Beach Club", -122.2723941228106, 47.656492670409385,  "ehh", 
+  "Trophy Cupcakes", -122.30133589785136, 47.66762053980776, "like", 
+  "Molly Moon's Icecream", -122.29917938418802, 47.66493277813059, "ehh",
+  "Trader Joes", -122.32158243432424, 47.66624291467835, "like",
+  "Center for Urban Horticulture", -122.29062343514943, 47.65852236756359, "ehh", 
+  "Magnuson Athletic Club", -122.2629246841705, 47.68767268086636, "like", 
+  "Starbucks", -122.29978051142461, 47.662630550998784, "love",
+)
+
+```
+
+
+```{r}
+#| fig-height: 10
+#| fig-width: 10
+#| fig-alt: >
+#|  A map that zooms in and focuses on an area of Seattle, Washington, United States. The map has points of three different colors which denote the feeling
+#|  that is associated with those locations. The points are labelled with the name of what they represent. The location data came from:
+#|  https://support.google.com/maps/answer/18539?hl=en&co=GENIE.Platform%3DDesktop.
+
+
+custom_colors <- c("red", "blue", "black")
+factpal <- colorFactor(palette = custom_colors, favorite_sea$feeling)
+
+leaflet(data = favorite_sea, 
+        options = leafletOptions(minZoom = 9, maxZoom = 20)
+) |> 
+  
+addTiles() |> 
+flyTo(
+  lng = mean(favorite_sea$long) +0.007,
+  lat = mean(favorite_sea$lat) +0.007,
+  zoom = 13
+) |>
+  
+  addCircles(label= ~place, weight = 8, color = ~factpal(feeling), opacity = 15) |>
+  
+  addLegend("topright", pal = factpal, values = ~feeling, title = "How I feel about them?") |>
+  addControl(
+    html = "A map of Seattle, Washington with highlighted locations of varying significance by Ashlyn R created in Macalester Introduction to Data Science 112, Spring 2025, map locations coming from Google Maps.",
+    position = "bottomleft"
+  )
+ 
+```

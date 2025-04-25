@@ -4,7 +4,7 @@ project:
 
 book:
   title: "COMP/STAT112 Notebook"
-  author: "Your Name Here"
+  author: "Ashlyn Ryan"
   date: today
   reader-mode: true
   page-navigation: true
@@ -13,7 +13,7 @@ book:
   
   
   sidebar:
-    title: "Your Name Here"
+    title: "Ashlyn Ryan"
     collapse-level: 2
     style: "docked"
     pinned: true
@@ -26,18 +26,39 @@ book:
     - part: "Best Work"
       chapters: 
       - bw/bw-uni.qmd
-      - bw/bw-bi.qmd
-      - bw/bw-tri.qmd
-      - bw/bw-quad.qmd
-      - bw/bw-spatial.qmd
+    #   - bw/bw-bi.qmd
+    #   - bw/bw-tri.qmd
+    #   - bw/bw-quad.qmd
+    #   - bw/bw-spatial.qmd
+    #   - exam/exam-1.qmd
+    #   - exam/exam-2.qmd
+    #   - bw/SoloProject.qmd
+    # 
+    # - part: "Summary"
+    #   chapters: 
+    #   - exam/Visualizations.qmd
+    #   - exam/Wrangling.qmd
+    # 
+    # 
+    # - part: "In-class Activities"
+    #   chapters:
+    #   - ica/ica-uni.qmd
+    #   - ica/ica-bi.qmd
+    #   - ica/ica-multi.qmd
+    #   - ica/ica-spatial.qmd
+    #   - ica/ica-effective.qmd
+    #   - ica/ica-wrangling.qmd
+    #   - ica/ica-dates.qmd
+    #   - ica/ica-reshaping.qmd
+    #   - ica/ica-joining.qmd
+    #   - ica/ica-factors.qmd
+    #   - ica/ica-string.qmd
+    #   - ica/ica-dataimport.qmd
 
-    - part: "In-class Activities"
-      chapters: 
-      - ica/ica-uni.qmd
-      - ica/ica-bi.qmd
-      - ica/ica-multi.qmd
-      - ica/ica-spatial.qmd
 
+    
+     
+    
 format:
   html:
     theme:
