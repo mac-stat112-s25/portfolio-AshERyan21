@@ -1,0 +1,1988 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>11&nbsp; Strings – COMP/STAT112 Notebook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../ica/ica-dataimport.html" rel="next">
+<link href="../ica/ica-factors.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link rel="stylesheet" href="../style/custom.css">
+</head>
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/ica-uni.html">In-class Activities</a></li><li class="breadcrumb-item"><a href="../ica/ica-string.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Strings</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Ashlyn Ryan</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Best Work</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-uni.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Univariate Viz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-bi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bivariate Viz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-tri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Trivariate Viz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-quad.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quadvariate Viz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-spatial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spatial Viz</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exam/exam-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exam 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exam/exam-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exam 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/SoloProject.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Solo Project</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Summary</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exam/Visualizations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualizations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exam/Wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Wrangling</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">In-class Activities</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-uni.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-bi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Bivariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-multi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Multivariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-spatial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Spatial Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-effective.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Effective Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Wrangling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-dates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Dates</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-reshaping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Reshaping</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-joining.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Joining</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-factors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Factors</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-string.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Strings</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-dataimport.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Import</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#review" id="toc-review" class="nav-link active" data-scroll-target="#review"><span class="header-section-number">11.1</span> Review</a></li>
+  <li>
+<a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings"><span class="header-section-number">11.2</span> Strings</a>
+  <ul class="collapse">
+<li><a href="#essential-functions" id="toc-essential-functions" class="nav-link" data-scroll-target="#essential-functions">Essential Functions</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example 1</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2"><span class="header-section-number">11.2.1</span> Example 2</a></li>
+  <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3"><span class="header-section-number">11.2.2</span> Example 3</a></li>
+  <li><a href="#example-4" id="toc-example-4" class="nav-link" data-scroll-target="#example-4"><span class="header-section-number">11.2.3</span> Example 4</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.3</span> Exercises</a>
+  <ul class="collapse">
+<li><a href="#exercise-1-time-slots" id="toc-exercise-1-time-slots" class="nav-link" data-scroll-target="#exercise-1-time-slots">Exercise 1: Time slots</a></li>
+  <li><a href="#exercise-2-prep-the-data" id="toc-exercise-2-prep-the-data" class="nav-link" data-scroll-target="#exercise-2-prep-the-data">Exercise 2: Prep the data</a></li>
+  <li><a href="#exercise-3-courses-by-department" id="toc-exercise-3-courses-by-department" class="nav-link" data-scroll-target="#exercise-3-courses-by-department">Exercise 3: Courses by department</a></li>
+  <li><a href="#exercise-4-stat-courses" id="toc-exercise-4-stat-courses" class="nav-link" data-scroll-target="#exercise-4-stat-courses">Exercise 4: STAT courses</a></li>
+  <li><a href="#exercise-5-more-cleaning" id="toc-exercise-5-more-cleaning" class="nav-link" data-scroll-target="#exercise-5-more-cleaning">Exercise 5: More cleaning</a></li>
+  <li><a href="#exercise-6-enrollment-departments" id="toc-exercise-6-enrollment-departments" class="nav-link" data-scroll-target="#exercise-6-enrollment-departments">Exercise 6: Enrollment &amp; departments</a></li>
+  </ul>
+</li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/ica-uni.html">In-class Activities</a></li><li class="breadcrumb-item"><a href="../ica/ica-string.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Strings</span></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">
+<span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Strings</span>
+</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><div class="callout callout-style-default callout-caution callout-titled" title="Learning Goals">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning Goals
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Learn some fundamentals of working with strings of text data.</li>
+<li>Learn functions to search and replace, detect patterns, locate patterns, extract patterns, and separate text with the <code>stringr</code> package.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Additional Resources">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Additional Resources
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For more information about the topics covered in this chapter, refer to the resources below:</p>
+<ul>
+<li>
+<a href="https://www.youtube.com/watch?v=__pJ_u94LZg&amp;t=52s">Working with strings (YouTube)</a> by Lisa Lendway</li>
+<li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/strings.pdf">strings cheat sheet (pdf)</a></li>
+<li>
+<a href="https://r4ds.hadley.nz/strings.html">Strings (html)</a> by Wickham, Çetinkaya-Rundel, &amp; Grolemund</li>
+<li>
+<a href="https://mdsr-book.github.io/mdsr2e/ch-text.html#regular-expressions-using-macbeth">Regular expressions (html)</a> by Baumer, Kaplan, and Horton</li>
+<li>
+<a href="https://www.garrickadenbuie.com/project/regexplain/">RegExplain RStudio addin tool (html)</a> (Garrick Aden-Buie)</li>
+<li><a href="https://regexr.com/">regexr exploration tool (html)</a></li>
+</ul>
+</div>
+</div>
+<section id="review" class="level2" data-number="11.1"><h2 data-number="11.1" class="anchored" data-anchor-id="review">
+<span class="header-section-number">11.1</span> Review</h2>
+<p><strong>WHERE ARE WE?</strong></p>
+<p>We’re in the <em>last day</em> of our “data preparation” unit:</p>
+<p><img src="https://mac-stat.github.io/images/112/legos.png" class="img-fluid"></p>
+</section><section id="strings" class="level2" data-number="11.2"><h2 data-number="11.2" class="anchored" data-anchor-id="strings">
+<span class="header-section-number">11.2</span> Strings</h2>
+<p>In the previous class, we started discussing some considerations in working with special types of “categorical” variables: <em>characters</em> and <em>factors</em> which are:</p>
+<ol type="1">
+<li><p><strong>Converting characters to factors (and factors to meaningful factors)</strong>–last time<br>
+When categorical information is stored as a <em>character</em> variable, the categories of interest might not be labeled or ordered in a meaningful way. We can fix that!</p></li>
+<li><p><strong>Strings</strong>–today!<br>
+When working with character strings, we might want to detect, replace, or extract certain <em>patterns</em>. For example, recall our data on <code>courses</code>:</p></li>
+</ol>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>    sessionID dept level    sem enroll     iid
+1 session1784    M   100 FA1991     22 inst265
+2 session1785    k   100 FA1991     52 inst458
+3 session1791    J   100 FA1993     22 inst223
+4 session1792    J   300 FA1993     20 inst235
+5 session1794    J   200 FA1993     22 inst234
+6 session1795    J   200 SP1994     26 inst230</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1718 obs. of  6 variables:
+ $ sessionID: chr  "session1784" "session1785" "session1791" "session1792" ...
+ $ dept     : chr  "M" "k" "J" "J" ...
+ $ level    : int  100 100 100 300 200 200 200 100 300 100 ...
+ $ sem      : chr  "FA1991" "FA1991" "FA1993" "FA1993" ...
+ $ enroll   : int  22 52 22 20 22 26 25 38 16 43 ...
+ $ iid      : chr  "inst265" "inst458" "inst223" "inst235" ...</code></pre>
+</div>
+</div>
+<p>Focusing on just the <code>sem</code> character variable, we might want to…</p>
+<ul>
+<li>change <code>FA</code> to <code>fall_</code> and <code>SP</code> to <code>spring_</code>
+</li>
+<li>keep only courses taught in fall</li>
+<li>split the variable into 2 new variables: <code>semester</code> (<code>FA</code> or <code>SP</code>) and <code>year</code>
+</li>
+</ul>
+<ol start="3" type="1">
+<li>Much more!–maybe in your projects or COMP/STAT 212<br>
+There are a lot of ways to process character variables. For example, we might have a variable that records the text for a sample of news articles. We might want to analyze things like the articles’ <em>sentiments</em>, word counts, typical word lengths, most common words, etc.</li>
+</ol>
+<section id="essential-functions" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="essential-functions">Essential Functions</h3>
+<p>The <code>stringr</code> package within <code>tidyverse</code> contains lots of functions to help process strings. We’ll focus on the most common. Letting <code>x</code> be a string variable…</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th style="text-align: left;">function</th>
+<th style="text-align: left;">arguments</th>
+<th style="text-align: left;">returns</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>str_replace()</code></td>
+<td style="text-align: left;"><code>x, pattern, replacement</code></td>
+<td style="text-align: left;">a modified string</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>str_replace_all()</code></td>
+<td style="text-align: left;"><code>x, pattern, replacement</code></td>
+<td style="text-align: left;">a modified string</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>str_to_lower()</code></td>
+<td style="text-align: left;"><code>x</code></td>
+<td style="text-align: left;">a modified string</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>str_sub()</code></td>
+<td style="text-align: left;"><code>x, start, end</code></td>
+<td style="text-align: left;">a modified string</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>str_length()</code></td>
+<td style="text-align: left;"><code>x</code></td>
+<td style="text-align: left;">a number</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>str_detect()</code></td>
+<td style="text-align: left;"><code>x, pattern</code></td>
+<td style="text-align: left;">TRUE/FALSE</td>
+</tr>
+</tbody>
+</table></section><section id="example-1" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="example-1">Example 1</h3>
+<p>Consider the following data with string variables :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>classes <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="at">sem        =</span> <span class="fu">c</span>(<span class="st">"SP2023"</span>, <span class="st">"FA2023"</span>, <span class="st">"SP2024"</span>),</span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="at">area       =</span> <span class="fu">c</span>(<span class="st">"History"</span>, <span class="st">"Math"</span>, <span class="st">"Anthro"</span>),</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="at">enroll     =</span> <span class="fu">c</span>(<span class="st">"30 - people"</span>, <span class="st">"20 - people"</span>, <span class="st">"25 - people"</span>),</span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="at">instructor =</span> <span class="fu">c</span>(<span class="st">"Ernesto Capello"</span>, <span class="st">"Lori Ziegelmeier"</span>, <span class="st">"Arjun Guneratne"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8"></a>)</span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a>classes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     sem    area      enroll       instructor
+1 SP2023 History 30 - people  Ernesto Capello
+2 FA2023    Math 20 - people Lori Ziegelmeier
+3 SP2024  Anthro 25 - people  Arjun Guneratne</code></pre>
+</div>
+</div>
+<p>Using only your intuition, use our <code>str_</code> functions to complete the following. NOTE: You might be able to use other wrangling verbs in some cases, but focus on the new functions here.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Define a new variable "num" that adds up the number of characters in the area label</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>classes <span class="ot">&lt;-</span> classes <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">mutate</span>(<span class="at">num =</span> <span class="fu">str_length</span>(area))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Change the areas to "history", "math", "anthro" instead of "History", "Math", "Anthro"</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>classes <span class="ot">&lt;-</span> classes <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">mutate</span>(<span class="at">area =</span> <span class="fu">str_to_lower</span>(area))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Create a variable that id's which courses were taught in spring</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>classes <span class="ot">&lt;-</span> classes <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">mutate</span>(<span class="at">spring =</span> <span class="fu">str_detect</span>(sem, <span class="st">"SP"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Change the semester labels to "fall2023", "spring2024", "spring2023"</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>classes <span class="ot">&lt;-</span> classes <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">mutate</span>(<span class="at">sem =</span> <span class="fu">str_replace</span>(sem, <span class="st">"SP"</span>, <span class="st">"spring"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">mutate</span>(<span class="at">sem =</span> <span class="fu">str_replace</span>(sem, <span class="st">"FA"</span>, <span class="st">"fall"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># In the enroll variable, change all e's to 3's (just because?)</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a>classes <span class="ot">&lt;-</span> classes <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">mutate</span>(<span class="at">enroll =</span> <span class="fu">str_replace_all</span>(enroll, <span class="st">"e"</span>, <span class="st">"3"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Use sem to create 2 new variables, one with only the semester (SP/FA) and 1 with the year</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="co"># Use sem to create 2 new variables, one with only the semester (SP/FA) and 1 with the year</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">mutate</span>(<span class="at">semester =</span> <span class="fu">str_sub</span>(sem, <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb10-5"><a href="#cb10-5"></a>         <span class="at">year =</span> <span class="fu">str_sub</span>(sem, <span class="dv">3</span>, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         sem    area      enroll       instructor num spring semester year
+1 spring2023 history 30 - p3opl3  Ernesto Capello   7   TRUE       sp ring
+2   fall2023    math 20 - p3opl3 Lori Ziegelmeier   4  FALSE       fa ll20
+3 spring2024  anthro 25 - p3opl3  Arjun Guneratne   6   TRUE       sp ring</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>classes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         sem    area      enroll       instructor num spring
+1 spring2023 history 30 - p3opl3  Ernesto Capello   7   TRUE
+2   fall2023    math 20 - p3opl3 Lori Ziegelmeier   4  FALSE
+3 spring2024  anthro 25 - p3opl3  Arjun Guneratne   6   TRUE</code></pre>
+</div>
+</div>
+</section><section id="summary" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="summary">Summary</h3>
+<p>Here’s what we learned about each function:</p>
+<ul>
+<li><p><code>str_replace(x, pattern, replacement)</code> finds the <em>first</em> part of <code>x</code> that matches the <code>pattern</code> and replaces it with <code>replacement</code></p></li>
+<li><p><code>str_replace_all(x, pattern, replacement)</code> finds <em>all</em> instances in <code>x</code> that matches the <code>pattern</code> and replaces it with <code>replacement</code></p></li>
+<li><p><code>str_to_lower(x)</code> converts all upper case letters in <code>x</code> to lower case</p></li>
+<li><p><code>str_sub(x, start, end)</code> only keeps a subset of characters in <code>x</code>, from <code>start</code> (a number indexing the first letter to keep) to <code>end</code> (a number indexing the last letter to keep)</p></li>
+<li><p><code>str_length(x)</code> records the number of characters in <code>x</code></p></li>
+<li><p><code>str_detect(x, pattern)</code> is TRUE if <code>x</code> contains the given <code>pattern</code> and FALSE otherwise</p></li>
+</ul></section><section id="example-2" class="level3" data-number="11.2.1"><h3 data-number="11.2.1" class="anchored" data-anchor-id="example-2">
+<span class="header-section-number">11.2.1</span> Example 2</h3>
+<p>Suppose we <em>only</em> want the spring courses:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># How can we do this after mutating?</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">mutate</span>(<span class="at">spring =</span> <span class="fu">str_detect</span>(sem, <span class="st">"SP"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         sem    area      enroll       instructor num spring
+1 spring2023 history 30 - p3opl3  Ernesto Capello   7  FALSE
+2   fall2023    math 20 - p3opl3 Lori Ziegelmeier   4  FALSE
+3 spring2024  anthro 25 - p3opl3  Arjun Guneratne   6  FALSE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># We don't have to mutate first!</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(sem, <span class="st">"SP"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] sem        area       enroll     instructor num        spring    
+&lt;0 rows&gt; (or 0-length row.names)</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Yet another way</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(sem, <span class="st">"FA"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         sem    area      enroll       instructor num spring
+1 spring2023 history 30 - p3opl3  Ernesto Capello   7   TRUE
+2   fall2023    math 20 - p3opl3 Lori Ziegelmeier   4  FALSE
+3 spring2024  anthro 25 - p3opl3  Arjun Guneratne   6   TRUE</code></pre>
+</div>
+</div>
+</section><section id="example-3" class="level3" data-number="11.2.2"><h3 data-number="11.2.2" class="anchored" data-anchor-id="example-3">
+<span class="header-section-number">11.2.2</span> Example 3</h3>
+<p>Suppose we wanted to get separate columns for the first and last names of each course instructor in <code>classes</code>. Try doing this using <code>str_sub()</code>. But don’t try too long! Explain what trouble you ran into.</p>
+</section><section id="example-4" class="level3" data-number="11.2.3"><h3 data-number="11.2.3" class="anchored" data-anchor-id="example-4">
+<span class="header-section-number">11.2.3</span> Example 4</h3>
+<p>In general, when we want to split a column into 2+ new columns, we can often use <code>separate()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">separate</span>(instructor, <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>), <span class="at">sep =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         sem    area      enroll   first        last num spring
+1 spring2023 history 30 - p3opl3 Ernesto     Capello   7   TRUE
+2   fall2023    math 20 - p3opl3    Lori Ziegelmeier   4  FALSE
+3 spring2024  anthro 25 - p3opl3   Arjun   Guneratne   6   TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Sometimes the function can "intuit" how we want to separate the variable</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">separate</span>(instructor, <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         sem    area      enroll   first        last num spring
+1 spring2023 history 30 - p3opl3 Ernesto     Capello   7   TRUE
+2   fall2023    math 20 - p3opl3    Lori Ziegelmeier   4  FALSE
+3 spring2024  anthro 25 - p3opl3   Arjun   Guneratne   6   TRUE</code></pre>
+</div>
+</div>
+<ol type="a">
+<li>Separate enroll into 2 separate columns: <code>students</code> and <code>people</code>. (These columns don’t make sense this is just practice).</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>classes <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">separate</span>(enroll, <span class="fu">c</span>(<span class="st">"students"</span>,<span class="st">"people"</span>), <span class="at">sep =</span> <span class="st">"-"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         sem    area students  people       instructor num spring
+1 spring2023 history      30   p3opl3  Ernesto Capello   7   TRUE
+2   fall2023    math      20   p3opl3 Lori Ziegelmeier   4  FALSE
+3 spring2024  anthro      25   p3opl3  Arjun Guneratne   6   TRUE</code></pre>
+</div>
+</div>
+<ol start="2" type="a">
+<li><p>We separated <code>sem</code> into semester and year above using <code>str_sub()</code>. Why would this be hard using <code>separate()</code>?</p></li>
+<li><p>When we want to split a column into 2+ new columns (or do other types of string processing), but there’s no consistent pattern by which to do this, we can use <em>regular expressions</em> (an optional topic):</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># (?&lt;=[SP|FA]): any character *before* the split point is a "SP" or "FA"</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="co"># (?=2): the first character *after* the split point is a 2</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb26-4"><a href="#cb26-4"></a>  <span class="fu">separate</span>(sem, </span>
+<span id="cb26-5"><a href="#cb26-5"></a>          <span class="fu">c</span>(<span class="st">"semester"</span>, <span class="st">"year"</span>),</span>
+<span id="cb26-6"><a href="#cb26-6"></a>          <span class="st">"(?&lt;=[spring|fall])(?=2)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  semester year    area      enroll       instructor num spring
+1   spring 2023 history 30 - p3opl3  Ernesto Capello   7   TRUE
+2     fall 2023    math 20 - p3opl3 Lori Ziegelmeier   4  FALSE
+3   spring 2024  anthro 25 - p3opl3  Arjun Guneratne   6   TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># More general:</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="co"># (?&lt;=[a-zA-Z]): any character *before* the split point is a lower or upper case letter</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="co"># (?=[0-9]): the first character *after* the split point is number</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">separate</span>(sem, </span>
+<span id="cb28-6"><a href="#cb28-6"></a>          <span class="fu">c</span>(<span class="st">"semester"</span>, <span class="st">"year"</span>),</span>
+<span id="cb28-7"><a href="#cb28-7"></a>          <span class="st">"(?&lt;=[a-z])(?=[0-9])"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  semester year    area      enroll       instructor num spring
+1   spring 2023 history 30 - p3opl3  Ernesto Capello   7   TRUE
+2     fall 2023    math 20 - p3opl3 Lori Ziegelmeier   4  FALSE
+3   spring 2024  anthro 25 - p3opl3  Arjun Guneratne   6   TRUE</code></pre>
+</div>
+</div>
+</section></section><section id="exercises" class="level2" data-number="11.3"><h2 data-number="11.3" class="anchored" data-anchor-id="exercises">
+<span class="header-section-number">11.3</span> Exercises</h2>
+<section id="exercise-1-time-slots" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-1-time-slots">Exercise 1: Time slots</h3>
+<p>The <code>courses</code> data includes <em>actual</em> data scraped from Mac’s <a href="https://macadmsys.macalester.edu/macssb/customPage/page/classSchedule">class schedule</a>. (Thanks to Prof Leslie Myint for the scraping code!!)</p>
+<p>If you want to learn how to scrape data, take COMP/STAT 212, Intermediate Data Science! NOTE: For simplicity, I removed classes that had “TBA” for the <code>days</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>courses <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/registrar.csv"</span>)</span>
+<span id="cb30-2"><a href="#cb30-2"></a></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="co"># Check it out</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="fu">head</span>(courses)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       number   crn                                                name  days
+1 AMST 112-01 10318         Introduction to African American Literature M W F
+2 AMST 194-01 10073              Introduction to Asian American Studies M W F
+3 AMST 194-F1 10072 What’s After White Empire - And Is It Already Here?  T R 
+4 AMST 203-01 10646 Politics and Inequality: The American Welfare State M W F
+5 AMST 205-01 10842                         Trans Theories and Politics  T R 
+6 AMST 209-01 10474                   Civil Rights in the United States   W  
+             time      room             instructor avail_max
+1 9:40 - 10:40 am  MAIN 009       Daylanne English    3 / 20
+2  1:10 - 2:10 pm MUSIC 219          Jake Nagasawa   -4 / 16
+3  3:00 - 4:30 pm   HUM 214 Karin Aguilar-San Juan    0 / 14
+4 9:40 - 10:40 am  CARN 305          Lesley Lavery    3 / 25
+5  3:00 - 4:30 pm  MAIN 009              Myrl Beam   -2 / 20
+6 7:00 - 10:00 pm  MAIN 010         Walter Greason   -1 / 15</code></pre>
+</div>
+</div>
+<p>Use our more familiar wrangling tools to warm up.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Construct a table that indicates the number of classes offered in each day/time slot</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="co"># Print only the 6 most popular time slots</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a></span>
+<span id="cb32-4"><a href="#cb32-4"></a>courses <span class="sc">|&gt;</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a>  <span class="fu">count</span>(days,time) <span class="sc">|&gt;</span></span>
+<span id="cb32-6"><a href="#cb32-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb32-7"><a href="#cb32-7"></a>  <span class="fu">head</span>(<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   days             time  n
+1 M W F 10:50 - 11:50 am 76
+2  T R   9:40 - 11:10 am 71
+3 M W F  9:40 - 10:40 am 68
+4 M W F   1:10 - 2:10 pm 66
+5  T R    3:00 - 4:30 pm 62
+6  T R    1:20 - 2:50 pm 59</code></pre>
+</div>
+</div>
+</section><section id="exercise-2-prep-the-data" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-2-prep-the-data">Exercise 2: Prep the data</h3>
+<p>So that we can analyze it later, we want to wrangle the <code>courses</code> data:</p>
+<ul>
+<li>Let’s get some enrollment info:
+<ul>
+<li>Split <code>avail_max</code> into 2 separate variables: <code>avail</code> and <code>max</code>.</li>
+<li>Use <code>avail</code> and <code>max</code> to define a new variable called <code>enrollment</code>. HINT: You’ll need <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code>
+</li>
+</ul>
+</li>
+<li>Split the course <code>number</code> into 3 separate variables: <code>dept</code>, <code>number</code>, and <code>section</code>. HINT: You can use <code>separate()</code> to split a variable into 3, not just 2 new variables.</li>
+</ul>
+<p>Store this as <code>courses_clean</code> so that you can use it later.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>courses_clean <span class="ot">&lt;-</span> courses <span class="sc">|&gt;</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">separate</span>(avail_max, <span class="fu">c</span>(<span class="st">"avail"</span>, <span class="st">"max"</span>), <span class="at">sep =</span> <span class="st">"/"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a>  <span class="fu">mutate</span>(<span class="at">avail =</span> <span class="fu">as.numeric</span>(avail)) <span class="sc">|&gt;</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a>  <span class="fu">mutate</span>(<span class="at">max =</span> <span class="fu">as.numeric</span>(max)) <span class="sc">|&gt;</span></span>
+<span id="cb34-5"><a href="#cb34-5"></a>  <span class="fu">mutate</span>(<span class="at">enrollment =</span> max <span class="sc">-</span> avail)</span>
+<span id="cb34-6"><a href="#cb34-6"></a></span>
+<span id="cb34-7"><a href="#cb34-7"></a>courses_clean <span class="ot">&lt;-</span> courses_clean <span class="sc">|&gt;</span></span>
+<span id="cb34-8"><a href="#cb34-8"></a>  <span class="fu">separate</span>(number, <span class="fu">c</span>(<span class="st">"dept"</span>, <span class="st">"number"</span>, <span class="st">"selection"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="exercise-3-courses-by-department" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-3-courses-by-department">Exercise 3: Courses by department</h3>
+<p>Using <code>courses_clean</code>…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Identify the 6 departments that offered the most sections</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a></span>
+<span id="cb35-3"><a href="#cb35-3"></a>courses_clean <span class="sc">|&gt;</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="fu">count</span>(dept) <span class="sc">|&gt;</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a> <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb35-6"><a href="#cb35-6"></a> <span class="fu">head</span>(<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  dept  n
+1 SPAN 45
+2 BIOL 44
+3 ENVI 38
+4 PSYC 37
+5 CHEM 33
+6 COMP 31</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Identify the 6 departments with the longest average course titles</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>courses_clean <span class="sc">|&gt;</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a>  <span class="fu">mutate</span>(<span class="at">name_length =</span> <span class="fu">str_length</span>(name)) <span class="sc">|&gt;</span></span>
+<span id="cb37-4"><a href="#cb37-4"></a>  <span class="fu">group_by</span>(dept) <span class="sc">|&gt;</span></span>
+<span id="cb37-5"><a href="#cb37-5"></a>  <span class="fu">summarize</span>(<span class="at">lact =</span> <span class="fu">mean</span>(name_length)) <span class="sc">|&gt;</span></span>
+<span id="cb37-6"><a href="#cb37-6"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(lact)) <span class="sc">|&gt;</span></span>
+<span id="cb37-7"><a href="#cb37-7"></a>  <span class="fu">head</span>(<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  dept   lact
+  &lt;chr&gt; &lt;dbl&gt;
+1 WGSS   46.3
+2 INTL   41.4
+3 EDUC   39.4
+4 MCST   39.4
+5 POLI   37.4
+6 AMST   37.3</code></pre>
+</div>
+</div>
+</section><section id="exercise-4-stat-courses" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-4-stat-courses">Exercise 4: STAT courses</h3>
+<section id="part-a" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-a">Part a</h4>
+<p>Get a subset of <code>courses_clean</code> that only includes courses taught by Alicia Johnson.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>courses_clean <span class="sc">|&gt;</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>  <span class="fu">filter</span>(instructor <span class="sc">==</span> <span class="st">"Alicia Johnson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  dept number selection   crn                         name  days
+1 STAT    253        01 10806 Statistical Machine Learning  T R 
+2 STAT    253        02 10807 Statistical Machine Learning  T R 
+3 STAT    253        03 10808 Statistical Machine Learning  T R 
+             time       room     instructor avail max enrollment
+1 9:40 - 11:10 am THEATR 206 Alicia Johnson    -3  20         23
+2  1:20 - 2:50 pm THEATR 206 Alicia Johnson    -3  20         23
+3  3:00 - 4:30 pm THEATR 206 Alicia Johnson     2  20         18</code></pre>
+</div>
+</div>
+</section><section id="part-b" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b">Part b</h4>
+<p>Create a new dataset from <code>courses_clean</code>, named <code>stat</code>, that only includes STAT sections. In this dataset:</p>
+<ul>
+<li>
+<p>In the course names:</p>
+<ul>
+<li>Remove “Introduction to” from any name.</li>
+<li>Shorten “Statistical” to “Stat” where relevant.</li>
+</ul>
+</li>
+<li><p>Define a variable that records the <code>start_time</code> for the course.</p></li>
+<li><p>Keep only the <code>number, name, start_time, enroll</code> columns.</p></li>
+<li><p>The result should have 18 rows and 4 columns.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>courses_clean <span class="sc">|&gt;</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>  <span class="fu">filter</span>(dept <span class="sc">==</span> <span class="st">"STAT"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_replace</span>(name, <span class="st">"Statistical"</span>, <span class="st">"Stat"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb41-4"><a href="#cb41-4"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_replace</span>(name, <span class="st">"Introduction to "</span>, <span class="st">""</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb41-5"><a href="#cb41-5"></a>  <span class="fu">separate</span>(time, <span class="fu">c</span>(<span class="st">"start"</span>, <span class="st">"end"</span>), <span class="at">sep=</span> <span class="st">"-"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb41-6"><a href="#cb41-6"></a>  <span class="fu">mutate</span>(<span class="at">start_time =</span> start) <span class="sc">|&gt;</span></span>
+<span id="cb41-7"><a href="#cb41-7"></a>  <span class="fu">select</span>(number, name, start_time, enrollment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   number                      name start_time enrollment
+1     112              Data Science      3:00          27
+2     112              Data Science      9:40          21
+3     112              Data Science      1:20          25
+4     125              Epidemiology     12:00          26
+5     155             Stat Modeling      1:10          32
+6     155             Stat Modeling      9:40          24
+7     155             Stat Modeling     10:50          26
+8     155             Stat Modeling      3:30          25
+9     155             Stat Modeling      1:20          30
+10    155             Stat Modeling      3:00          27
+11    212 Intermediate Data Science      9:40          11
+12    212 Intermediate Data Science      1:20          11
+13    253     Stat Machine Learning      9:40          23
+14    253     Stat Machine Learning      1:20          23
+15    253     Stat Machine Learning      3:00          18
+16    354               Probability      3:00          22
+17    452           Correlated Data      9:40           7
+18    452           Correlated Data      1:20           8
+19    456  Projects in Data Science      9:40          11</code></pre>
+</div>
+</div>
+</section></section><section id="exercise-5-more-cleaning" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-5-more-cleaning">Exercise 5: More cleaning</h3>
+<p>In the next exercises, we’ll dig into enrollments. Let’s get the data ready for that analysis here. Make the following changes to the <code>courses_clean</code> data. Because they have different enrollment structures, and we don’t want to compare apples and oranges, <em>remove</em> the following:</p>
+<ul>
+<li><p>all sections in <code>PE</code> and <code>INTD</code> (interdisciplinary studies courses)</p></li>
+<li><p>all music ensembles and dance practicums, i.e.&nbsp;all MUSI and THDA classes with numbers less than 100. HINT: <code>!(dept == "MUSI" &amp; as.numeric(number) &lt; 100)</code></p></li>
+<li><p>all lab sections. Be careful which variable you use here. For example, you don’t want to search by “Lab” and accidentally eliminate courses with words such as “Labor”.</p></li>
+</ul>
+<p>Save the results as <code>enrollments</code> (don’t overwrite <code>courses_clean</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>enrollments <span class="ot">&lt;-</span> courses_clean <span class="sc">|&gt;</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a>  <span class="fu">filter</span>(dept <span class="sc">!=</span> <span class="fu">c</span>(<span class="st">"PE"</span>, <span class="st">"INTD"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb43-3"><a href="#cb43-3"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(dept <span class="sc">==</span> <span class="st">"MUSI"</span> <span class="sc">&amp;</span> <span class="fu">as.numeric</span>(number) <span class="sc">&lt;</span> <span class="dv">100</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb43-4"><a href="#cb43-4"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(dept <span class="sc">==</span> <span class="st">"THDA"</span> <span class="sc">&amp;</span> <span class="fu">as.numeric</span>(number) <span class="sc">&lt;</span> <span class="dv">100</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb43-5"><a href="#cb43-5"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(selection, <span class="st">"L"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="exercise-6-enrollment-departments" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-6-enrollment-departments">Exercise 6: Enrollment &amp; departments</h3>
+<p>Explore enrollments by department. <em>You</em> decide what research questions to focus on. Use both visual and numerical summaries.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">head</span>(enrollments)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  dept number selection   crn
+1 AMST    112        01 10318
+2 AMST    194        01 10073
+3 AMST    194        F1 10072
+4 AMST    203        01 10646
+5 AMST    205        01 10842
+6 AMST    209        01 10474
+                                                 name  days            time
+1         Introduction to African American Literature M W F 9:40 - 10:40 am
+2              Introduction to Asian American Studies M W F  1:10 - 2:10 pm
+3 What’s After White Empire - And Is It Already Here?  T R   3:00 - 4:30 pm
+4 Politics and Inequality: The American Welfare State M W F 9:40 - 10:40 am
+5                         Trans Theories and Politics  T R   3:00 - 4:30 pm
+6                   Civil Rights in the United States   W   7:00 - 10:00 pm
+       room             instructor avail max enrollment
+1  MAIN 009       Daylanne English     3  20         17
+2 MUSIC 219          Jake Nagasawa    -4  16         20
+3   HUM 214 Karin Aguilar-San Juan     0  14         14
+4  CARN 305          Lesley Lavery     3  25         22
+5  MAIN 009              Myrl Beam    -2  20         22
+6  MAIN 010         Walter Greason    -1  15         16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>enrollments <span class="ot">&lt;-</span> enrollments <span class="sc">|&gt;</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_replace</span>(name, <span class="st">"Statistical"</span>, <span class="st">"Stat"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb46-3"><a href="#cb46-3"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_replace</span>(name, <span class="st">"Introduction to "</span>, <span class="st">""</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb46-4"><a href="#cb46-4"></a>  <span class="fu">separate</span>(time, <span class="fu">c</span>(<span class="st">"start"</span>, <span class="st">"end"</span>), <span class="at">sep=</span> <span class="st">"-"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb46-5"><a href="#cb46-5"></a>  <span class="fu">mutate</span>(<span class="at">start_time =</span> start)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>enrollments <span class="sc">|&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>enrollment, <span class="at">color=</span>dept)) <span class="sc">+</span></span>
+<span id="cb47-3"><a href="#cb47-3"></a>  <span class="fu">geom_density</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="ica-string_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>enrollments <span class="sc">|&gt;</span></span>
+<span id="cb48-2"><a href="#cb48-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>enrollment, <span class="at">y=</span>dept)) <span class="sc">+</span></span>
+<span id="cb48-3"><a href="#cb48-3"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="ica-string_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>enrollments <span class="sc">|&gt;</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>enrollment, <span class="at">y=</span>dept, <span class="at">color=</span>start_time)) <span class="sc">+</span></span>
+<span id="cb49-3"><a href="#cb49-3"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="ica-string_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+<!-- -->
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../ica/ica-factors.html" class="pagination-link" aria-label="Factors">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Factors</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../ica/ica-dataimport.html" class="pagination-link" aria-label="Data Import">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Data Import</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb50" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb50-1"><a href="#cb50-1"></a><span class="co">---</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a><span class="an">title:</span><span class="co"> "Strings"</span></span>
+<span id="cb50-3"><a href="#cb50-3"></a><span class="an">number-sections:</span><span class="co"> true</span></span>
+<span id="cb50-4"><a href="#cb50-4"></a><span class="an">execute:</span><span class="co"> </span></span>
+<span id="cb50-5"><a href="#cb50-5"></a><span class="co">  warning: false</span></span>
+<span id="cb50-6"><a href="#cb50-6"></a><span class="an">fig-env:</span><span class="co"> 'figure'</span></span>
+<span id="cb50-7"><a href="#cb50-7"></a><span class="an">fig-pos:</span><span class="co"> 'h'</span></span>
+<span id="cb50-8"><a href="#cb50-8"></a><span class="an">fig-align:</span><span class="co"> center</span></span>
+<span id="cb50-9"><a href="#cb50-9"></a><span class="an">code-fold:</span><span class="co"> false</span></span>
+<span id="cb50-10"><a href="#cb50-10"></a><span class="co">---</span></span>
+<span id="cb50-11"><a href="#cb50-11"></a></span>
+<span id="cb50-12"><a href="#cb50-12"></a></span>
+<span id="cb50-13"><a href="#cb50-13"></a></span>
+<span id="cb50-14"><a href="#cb50-14"></a>::: {.callout-caution title="Learning Goals"}</span>
+<span id="cb50-15"><a href="#cb50-15"></a><span class="ss">-   </span>Learn some fundamentals of working with strings of text data.</span>
+<span id="cb50-16"><a href="#cb50-16"></a><span class="ss">-   </span>Learn functions to search and replace, detect patterns, locate patterns, extract patterns, and separate text with the <span class="in">`stringr`</span> package.</span>
+<span id="cb50-17"><a href="#cb50-17"></a>:::</span>
+<span id="cb50-18"><a href="#cb50-18"></a></span>
+<span id="cb50-19"><a href="#cb50-19"></a>::: {.callout-note title="Additional Resources"}</span>
+<span id="cb50-20"><a href="#cb50-20"></a>For more information about the topics covered in this chapter, refer to the resources below:</span>
+<span id="cb50-21"><a href="#cb50-21"></a></span>
+<span id="cb50-22"><a href="#cb50-22"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">Working with strings (YouTube)</span><span class="co">](https://www.youtube.com/watch?v=__pJ_u94LZg&amp;t=52s)</span> by Lisa Lendway</span>
+<span id="cb50-23"><a href="#cb50-23"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">strings cheat sheet (pdf)</span><span class="co">](https://raw.githubusercontent.com/rstudio/cheatsheets/main/strings.pdf)</span></span>
+<span id="cb50-24"><a href="#cb50-24"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">Strings (html)</span><span class="co">](https://r4ds.hadley.nz/strings.html)</span> by Wickham, Çetinkaya-Rundel, &amp; Grolemund</span>
+<span id="cb50-25"><a href="#cb50-25"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">Regular expressions (html)</span><span class="co">](https://mdsr-book.github.io/mdsr2e/ch-text.html#regular-expressions-using-macbeth)</span> by Baumer, Kaplan, and Horton</span>
+<span id="cb50-26"><a href="#cb50-26"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">RegExplain RStudio addin tool (html)</span><span class="co">](https://www.garrickadenbuie.com/project/regexplain/)</span> (Garrick Aden-Buie)</span>
+<span id="cb50-27"><a href="#cb50-27"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">regexr exploration tool (html)</span><span class="co">](https://regexr.com/)</span></span>
+<span id="cb50-28"><a href="#cb50-28"></a>:::</span>
+<span id="cb50-29"><a href="#cb50-29"></a></span>
+<span id="cb50-30"><a href="#cb50-30"></a></span>
+<span id="cb50-31"><a href="#cb50-31"></a></span>
+<span id="cb50-32"><a href="#cb50-32"></a></span>
+<span id="cb50-33"><a href="#cb50-33"></a><span class="fu">## Review</span></span>
+<span id="cb50-34"><a href="#cb50-34"></a></span>
+<span id="cb50-35"><a href="#cb50-35"></a>**WHERE ARE WE?**</span>
+<span id="cb50-36"><a href="#cb50-36"></a></span>
+<span id="cb50-37"><a href="#cb50-37"></a>We're in the *last day* of our "data preparation" unit:</span>
+<span id="cb50-38"><a href="#cb50-38"></a></span>
+<span id="cb50-39"><a href="#cb50-39"></a><span class="al">![](https://mac-stat.github.io/images/112/legos.png)</span></span>
+<span id="cb50-40"><a href="#cb50-40"></a></span>
+<span id="cb50-41"><a href="#cb50-41"></a><span class="fu">## Strings</span></span>
+<span id="cb50-42"><a href="#cb50-42"></a></span>
+<span id="cb50-43"><a href="#cb50-43"></a>In the previous class, we started discussing some considerations in working with special types of "categorical" variables: *characters* and *factors* which are:</span>
+<span id="cb50-44"><a href="#cb50-44"></a></span>
+<span id="cb50-45"><a href="#cb50-45"></a><span class="ss">1.  </span>**Converting characters to factors (and factors to meaningful factors)**--last time\</span>
+<span id="cb50-46"><a href="#cb50-46"></a>    When categorical information is stored as a *character* variable, the categories of interest might not be labeled or ordered in a meaningful way. We can fix that!</span>
+<span id="cb50-47"><a href="#cb50-47"></a></span>
+<span id="cb50-48"><a href="#cb50-48"></a><span class="ss">2.  </span>**Strings**--today!\</span>
+<span id="cb50-49"><a href="#cb50-49"></a>    When working with character strings, we might want to detect, replace, or extract certain *patterns*. For example, recall our data on <span class="in">`courses`</span>:</span>
+<span id="cb50-50"><a href="#cb50-50"></a></span>
+<span id="cb50-51"><a href="#cb50-51"></a><span class="in">```{r echo = FALSE}</span></span>
+<span id="cb50-52"><a href="#cb50-52"></a><span class="in">courses_old &lt;- read.csv("https://mac-stat.github.io/data/courses.csv")</span></span>
+<span id="cb50-53"><a href="#cb50-53"></a></span>
+<span id="cb50-54"><a href="#cb50-54"></a><span class="in"># Check out the data</span></span>
+<span id="cb50-55"><a href="#cb50-55"></a><span class="in">head(courses_old)</span></span>
+<span id="cb50-56"><a href="#cb50-56"></a></span>
+<span id="cb50-57"><a href="#cb50-57"></a><span class="in"># Check out the structure of each variable</span></span>
+<span id="cb50-58"><a href="#cb50-58"></a><span class="in"># Many of these are characters!</span></span>
+<span id="cb50-59"><a href="#cb50-59"></a><span class="in">str(courses_old)</span></span>
+<span id="cb50-60"><a href="#cb50-60"></a><span class="in">```</span></span>
+<span id="cb50-61"><a href="#cb50-61"></a></span>
+<span id="cb50-62"><a href="#cb50-62"></a>Focusing on just the <span class="in">`sem`</span> character variable, we might want to...</span>
+<span id="cb50-63"><a href="#cb50-63"></a></span>
+<span id="cb50-64"><a href="#cb50-64"></a><span class="ss">- </span>change <span class="in">`FA`</span> to <span class="in">`fall_`</span> and <span class="in">`SP`</span> to <span class="in">`spring_`</span></span>
+<span id="cb50-65"><a href="#cb50-65"></a><span class="ss">- </span>keep only courses taught in fall</span>
+<span id="cb50-66"><a href="#cb50-66"></a><span class="ss">- </span>split the variable into 2 new variables: <span class="in">`semester`</span> (<span class="in">`FA`</span> or <span class="in">`SP`</span>) and <span class="in">`year`</span></span>
+<span id="cb50-67"><a href="#cb50-67"></a></span>
+<span id="cb50-68"><a href="#cb50-68"></a></span>
+<span id="cb50-69"><a href="#cb50-69"></a><span class="ss">3.  </span>Much more!--maybe in your projects or COMP/STAT 212\</span>
+<span id="cb50-70"><a href="#cb50-70"></a>    There are a lot of ways to process character variables. For example, we might have a variable that records the text for a sample of news articles. We might want to analyze things like the articles' *sentiments*, word counts, typical word lengths, most common words, etc.</span>
+<span id="cb50-71"><a href="#cb50-71"></a></span>
+<span id="cb50-72"><a href="#cb50-72"></a><span class="fu">### Essential Functions {-}</span></span>
+<span id="cb50-73"><a href="#cb50-73"></a></span>
+<span id="cb50-74"><a href="#cb50-74"></a>The <span class="in">`stringr`</span> package within <span class="in">`tidyverse`</span> contains lots of functions to help process strings. We'll focus on the most common. Letting <span class="in">`x`</span> be a string variable...</span>
+<span id="cb50-75"><a href="#cb50-75"></a></span>
+<span id="cb50-76"><a href="#cb50-76"></a>| function            | arguments                 | returns           |</span>
+<span id="cb50-77"><a href="#cb50-77"></a>|:--------------------|:--------------------------|:------------------|</span>
+<span id="cb50-78"><a href="#cb50-78"></a>| <span class="in">`str_replace()`</span>     | <span class="in">`x, pattern, replacement`</span> | a modified string |</span>
+<span id="cb50-79"><a href="#cb50-79"></a>| <span class="in">`str_replace_all()`</span> | <span class="in">`x, pattern, replacement`</span> | a modified string |</span>
+<span id="cb50-80"><a href="#cb50-80"></a>| <span class="in">`str_to_lower()`</span>    | <span class="in">`x`</span>                       | a modified string |</span>
+<span id="cb50-81"><a href="#cb50-81"></a>| <span class="in">`str_sub()`</span>         | <span class="in">`x, start, end`</span>           | a modified string |</span>
+<span id="cb50-82"><a href="#cb50-82"></a>| <span class="in">`str_length()`</span>      | <span class="in">`x`</span>                       | a number          |</span>
+<span id="cb50-83"><a href="#cb50-83"></a>| <span class="in">`str_detect()`</span>      | <span class="in">`x, pattern`</span>              | TRUE/FALSE        |</span>
+<span id="cb50-84"><a href="#cb50-84"></a></span>
+<span id="cb50-85"><a href="#cb50-85"></a><span class="fu">### Example 1 {-}</span></span>
+<span id="cb50-86"><a href="#cb50-86"></a></span>
+<span id="cb50-87"><a href="#cb50-87"></a>Consider the following data with string variables :</span>
+<span id="cb50-88"><a href="#cb50-88"></a></span>
+<span id="cb50-91"><a href="#cb50-91"></a><span class="in">```{r}</span></span>
+<span id="cb50-92"><a href="#cb50-92"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb50-93"><a href="#cb50-93"></a></span>
+<span id="cb50-94"><a href="#cb50-94"></a>classes <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb50-95"><a href="#cb50-95"></a>  <span class="at">sem        =</span> <span class="fu">c</span>(<span class="st">"SP2023"</span>, <span class="st">"FA2023"</span>, <span class="st">"SP2024"</span>),</span>
+<span id="cb50-96"><a href="#cb50-96"></a>  <span class="at">area       =</span> <span class="fu">c</span>(<span class="st">"History"</span>, <span class="st">"Math"</span>, <span class="st">"Anthro"</span>),</span>
+<span id="cb50-97"><a href="#cb50-97"></a>  <span class="at">enroll     =</span> <span class="fu">c</span>(<span class="st">"30 - people"</span>, <span class="st">"20 - people"</span>, <span class="st">"25 - people"</span>),</span>
+<span id="cb50-98"><a href="#cb50-98"></a>  <span class="at">instructor =</span> <span class="fu">c</span>(<span class="st">"Ernesto Capello"</span>, <span class="st">"Lori Ziegelmeier"</span>, <span class="st">"Arjun Guneratne"</span>)</span>
+<span id="cb50-99"><a href="#cb50-99"></a>)</span>
+<span id="cb50-100"><a href="#cb50-100"></a></span>
+<span id="cb50-101"><a href="#cb50-101"></a>classes</span>
+<span id="cb50-102"><a href="#cb50-102"></a><span class="in">```</span></span>
+<span id="cb50-103"><a href="#cb50-103"></a></span>
+<span id="cb50-104"><a href="#cb50-104"></a>Using only your intuition, use our <span class="in">`str_`</span> functions to complete the following. NOTE: You might be able to use other wrangling verbs in some cases, but focus on the new functions here.</span>
+<span id="cb50-105"><a href="#cb50-105"></a></span>
+<span id="cb50-108"><a href="#cb50-108"></a><span class="in">```{r}</span></span>
+<span id="cb50-109"><a href="#cb50-109"></a><span class="co"># Define a new variable "num" that adds up the number of characters in the area label</span></span>
+<span id="cb50-110"><a href="#cb50-110"></a>classes <span class="ot">&lt;-</span> classes <span class="sc">|&gt;</span></span>
+<span id="cb50-111"><a href="#cb50-111"></a>  <span class="fu">mutate</span>(<span class="at">num =</span> <span class="fu">str_length</span>(area))</span>
+<span id="cb50-112"><a href="#cb50-112"></a></span>
+<span id="cb50-113"><a href="#cb50-113"></a></span>
+<span id="cb50-114"><a href="#cb50-114"></a><span class="in">```</span></span>
+<span id="cb50-115"><a href="#cb50-115"></a></span>
+<span id="cb50-118"><a href="#cb50-118"></a><span class="in">```{r}</span></span>
+<span id="cb50-119"><a href="#cb50-119"></a><span class="co"># Change the areas to "history", "math", "anthro" instead of "History", "Math", "Anthro"</span></span>
+<span id="cb50-120"><a href="#cb50-120"></a>classes <span class="ot">&lt;-</span> classes <span class="sc">|&gt;</span></span>
+<span id="cb50-121"><a href="#cb50-121"></a>  <span class="fu">mutate</span>(<span class="at">area =</span> <span class="fu">str_to_lower</span>(area))</span>
+<span id="cb50-122"><a href="#cb50-122"></a></span>
+<span id="cb50-123"><a href="#cb50-123"></a></span>
+<span id="cb50-124"><a href="#cb50-124"></a><span class="in">```</span></span>
+<span id="cb50-125"><a href="#cb50-125"></a></span>
+<span id="cb50-128"><a href="#cb50-128"></a><span class="in">```{r}</span></span>
+<span id="cb50-129"><a href="#cb50-129"></a><span class="co"># Create a variable that id's which courses were taught in spring</span></span>
+<span id="cb50-130"><a href="#cb50-130"></a>classes <span class="ot">&lt;-</span> classes <span class="sc">|&gt;</span></span>
+<span id="cb50-131"><a href="#cb50-131"></a>  <span class="fu">mutate</span>(<span class="at">spring =</span> <span class="fu">str_detect</span>(sem, <span class="st">"SP"</span>))</span>
+<span id="cb50-132"><a href="#cb50-132"></a></span>
+<span id="cb50-133"><a href="#cb50-133"></a><span class="in">```</span></span>
+<span id="cb50-134"><a href="#cb50-134"></a></span>
+<span id="cb50-137"><a href="#cb50-137"></a><span class="in">```{r}</span></span>
+<span id="cb50-138"><a href="#cb50-138"></a><span class="co"># Change the semester labels to "fall2023", "spring2024", "spring2023"</span></span>
+<span id="cb50-139"><a href="#cb50-139"></a>classes <span class="ot">&lt;-</span> classes <span class="sc">|&gt;</span></span>
+<span id="cb50-140"><a href="#cb50-140"></a>  <span class="fu">mutate</span>(<span class="at">sem =</span> <span class="fu">str_replace</span>(sem, <span class="st">"SP"</span>, <span class="st">"spring"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb50-141"><a href="#cb50-141"></a>  <span class="fu">mutate</span>(<span class="at">sem =</span> <span class="fu">str_replace</span>(sem, <span class="st">"FA"</span>, <span class="st">"fall"</span>))</span>
+<span id="cb50-142"><a href="#cb50-142"></a>          </span>
+<span id="cb50-143"><a href="#cb50-143"></a>  </span>
+<span id="cb50-144"><a href="#cb50-144"></a></span>
+<span id="cb50-145"><a href="#cb50-145"></a><span class="in">```</span></span>
+<span id="cb50-146"><a href="#cb50-146"></a></span>
+<span id="cb50-149"><a href="#cb50-149"></a><span class="in">```{r}</span></span>
+<span id="cb50-150"><a href="#cb50-150"></a><span class="co"># In the enroll variable, change all e's to 3's (just because?)</span></span>
+<span id="cb50-151"><a href="#cb50-151"></a></span>
+<span id="cb50-152"><a href="#cb50-152"></a>classes <span class="ot">&lt;-</span> classes <span class="sc">|&gt;</span></span>
+<span id="cb50-153"><a href="#cb50-153"></a>  <span class="fu">mutate</span>(<span class="at">enroll =</span> <span class="fu">str_replace_all</span>(enroll, <span class="st">"e"</span>, <span class="st">"3"</span>))</span>
+<span id="cb50-154"><a href="#cb50-154"></a></span>
+<span id="cb50-155"><a href="#cb50-155"></a><span class="in">```</span></span>
+<span id="cb50-156"><a href="#cb50-156"></a></span>
+<span id="cb50-159"><a href="#cb50-159"></a><span class="in">```{r}</span></span>
+<span id="cb50-160"><a href="#cb50-160"></a><span class="co"># Use sem to create 2 new variables, one with only the semester (SP/FA) and 1 with the year</span></span>
+<span id="cb50-161"><a href="#cb50-161"></a><span class="co"># Use sem to create 2 new variables, one with only the semester (SP/FA) and 1 with the year</span></span>
+<span id="cb50-162"><a href="#cb50-162"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb50-163"><a href="#cb50-163"></a>  <span class="fu">mutate</span>(<span class="at">semester =</span> <span class="fu">str_sub</span>(sem, <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb50-164"><a href="#cb50-164"></a>         <span class="at">year =</span> <span class="fu">str_sub</span>(sem, <span class="dv">3</span>, <span class="dv">6</span>))</span>
+<span id="cb50-165"><a href="#cb50-165"></a></span>
+<span id="cb50-166"><a href="#cb50-166"></a>classes</span>
+<span id="cb50-167"><a href="#cb50-167"></a></span>
+<span id="cb50-168"><a href="#cb50-168"></a><span class="in">```</span></span>
+<span id="cb50-169"><a href="#cb50-169"></a></span>
+<span id="cb50-170"><a href="#cb50-170"></a><span class="fu">### Summary {-}</span></span>
+<span id="cb50-171"><a href="#cb50-171"></a></span>
+<span id="cb50-172"><a href="#cb50-172"></a>Here's what we learned about each function:</span>
+<span id="cb50-173"><a href="#cb50-173"></a></span>
+<span id="cb50-174"><a href="#cb50-174"></a><span class="ss">-   </span><span class="in">`str_replace(x, pattern, replacement)`</span> finds the *first* part of <span class="in">`x`</span> that matches the <span class="in">`pattern`</span> and replaces it with <span class="in">`replacement`</span></span>
+<span id="cb50-175"><a href="#cb50-175"></a></span>
+<span id="cb50-176"><a href="#cb50-176"></a><span class="ss">-   </span><span class="in">`str_replace_all(x, pattern, replacement)`</span> finds *all* instances in <span class="in">`x`</span> that matches the <span class="in">`pattern`</span> and replaces it with <span class="in">`replacement`</span></span>
+<span id="cb50-177"><a href="#cb50-177"></a></span>
+<span id="cb50-178"><a href="#cb50-178"></a><span class="ss">-   </span><span class="in">`str_to_lower(x)`</span> converts all upper case letters in <span class="in">`x`</span> to lower case</span>
+<span id="cb50-179"><a href="#cb50-179"></a></span>
+<span id="cb50-180"><a href="#cb50-180"></a><span class="ss">-   </span><span class="in">`str_sub(x, start, end)`</span> only keeps a subset of characters in <span class="in">`x`</span>, from <span class="in">`start`</span> (a number indexing the first letter to keep) to <span class="in">`end`</span> (a number indexing the last letter to keep)</span>
+<span id="cb50-181"><a href="#cb50-181"></a></span>
+<span id="cb50-182"><a href="#cb50-182"></a><span class="ss">-   </span><span class="in">`str_length(x)`</span> records the number of characters in <span class="in">`x`</span></span>
+<span id="cb50-183"><a href="#cb50-183"></a></span>
+<span id="cb50-184"><a href="#cb50-184"></a><span class="ss">-   </span><span class="in">`str_detect(x, pattern)`</span> is TRUE if <span class="in">`x`</span> contains the given <span class="in">`pattern`</span> and FALSE otherwise</span>
+<span id="cb50-185"><a href="#cb50-185"></a></span>
+<span id="cb50-186"><a href="#cb50-186"></a><span class="fu">### Example 2</span></span>
+<span id="cb50-187"><a href="#cb50-187"></a></span>
+<span id="cb50-188"><a href="#cb50-188"></a>Suppose we *only* want the spring courses:</span>
+<span id="cb50-189"><a href="#cb50-189"></a></span>
+<span id="cb50-192"><a href="#cb50-192"></a><span class="in">```{r}</span></span>
+<span id="cb50-193"><a href="#cb50-193"></a><span class="co"># How can we do this after mutating?</span></span>
+<span id="cb50-194"><a href="#cb50-194"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb50-195"><a href="#cb50-195"></a>  <span class="fu">mutate</span>(<span class="at">spring =</span> <span class="fu">str_detect</span>(sem, <span class="st">"SP"</span>))</span>
+<span id="cb50-196"><a href="#cb50-196"></a><span class="in">```</span></span>
+<span id="cb50-197"><a href="#cb50-197"></a></span>
+<span id="cb50-200"><a href="#cb50-200"></a><span class="in">```{r}</span></span>
+<span id="cb50-201"><a href="#cb50-201"></a><span class="co"># We don't have to mutate first!</span></span>
+<span id="cb50-202"><a href="#cb50-202"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb50-203"><a href="#cb50-203"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(sem, <span class="st">"SP"</span>))</span>
+<span id="cb50-204"><a href="#cb50-204"></a><span class="in">```</span></span>
+<span id="cb50-205"><a href="#cb50-205"></a></span>
+<span id="cb50-208"><a href="#cb50-208"></a><span class="in">```{r}</span></span>
+<span id="cb50-209"><a href="#cb50-209"></a><span class="co"># Yet another way</span></span>
+<span id="cb50-210"><a href="#cb50-210"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb50-211"><a href="#cb50-211"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(sem, <span class="st">"FA"</span>))</span>
+<span id="cb50-212"><a href="#cb50-212"></a><span class="in">```</span></span>
+<span id="cb50-213"><a href="#cb50-213"></a></span>
+<span id="cb50-214"><a href="#cb50-214"></a><span class="fu">### Example 3</span></span>
+<span id="cb50-215"><a href="#cb50-215"></a></span>
+<span id="cb50-216"><a href="#cb50-216"></a>Suppose we wanted to get separate columns for the first and last names of each course instructor in <span class="in">`classes`</span>. Try doing this using <span class="in">`str_sub()`</span>. But don't try too long! Explain what trouble you ran into.</span>
+<span id="cb50-217"><a href="#cb50-217"></a></span>
+<span id="cb50-218"><a href="#cb50-218"></a><span class="fu">### Example 4</span></span>
+<span id="cb50-219"><a href="#cb50-219"></a></span>
+<span id="cb50-220"><a href="#cb50-220"></a>In general, when we want to split a column into 2+ new columns, we can often use <span class="in">`separate()`</span>:</span>
+<span id="cb50-221"><a href="#cb50-221"></a></span>
+<span id="cb50-224"><a href="#cb50-224"></a><span class="in">```{r}</span></span>
+<span id="cb50-225"><a href="#cb50-225"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb50-226"><a href="#cb50-226"></a>  <span class="fu">separate</span>(instructor, <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>), <span class="at">sep =</span> <span class="st">" "</span>)</span>
+<span id="cb50-227"><a href="#cb50-227"></a><span class="in">```</span></span>
+<span id="cb50-228"><a href="#cb50-228"></a></span>
+<span id="cb50-231"><a href="#cb50-231"></a><span class="in">```{r}</span></span>
+<span id="cb50-232"><a href="#cb50-232"></a><span class="co"># Sometimes the function can "intuit" how we want to separate the variable</span></span>
+<span id="cb50-233"><a href="#cb50-233"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb50-234"><a href="#cb50-234"></a>  <span class="fu">separate</span>(instructor, <span class="fu">c</span>(<span class="st">"first"</span>, <span class="st">"last"</span>))</span>
+<span id="cb50-235"><a href="#cb50-235"></a><span class="in">```</span></span>
+<span id="cb50-236"><a href="#cb50-236"></a></span>
+<span id="cb50-237"><a href="#cb50-237"></a>a.  Separate enroll into 2 separate columns: <span class="in">`students`</span> and <span class="in">`people`</span>. (These columns don't make sense this is just practice).</span>
+<span id="cb50-238"><a href="#cb50-238"></a></span>
+<span id="cb50-241"><a href="#cb50-241"></a><span class="in">```{r}</span></span>
+<span id="cb50-242"><a href="#cb50-242"></a>classes <span class="sc">|&gt;</span></span>
+<span id="cb50-243"><a href="#cb50-243"></a>  <span class="fu">separate</span>(enroll, <span class="fu">c</span>(<span class="st">"students"</span>,<span class="st">"people"</span>), <span class="at">sep =</span> <span class="st">"-"</span>)</span>
+<span id="cb50-244"><a href="#cb50-244"></a><span class="in">```</span></span>
+<span id="cb50-245"><a href="#cb50-245"></a></span>
+<span id="cb50-246"><a href="#cb50-246"></a>b.  We separated <span class="in">`sem`</span> into semester and year above using <span class="in">`str_sub()`</span>. Why would this be hard using <span class="in">`separate()`</span>?</span>
+<span id="cb50-247"><a href="#cb50-247"></a></span>
+<span id="cb50-248"><a href="#cb50-248"></a>c.  When we want to split a column into 2+ new columns (or do other types of string processing), but there's no consistent pattern by which to do this, we can use *regular expressions* (an optional topic):</span>
+<span id="cb50-249"><a href="#cb50-249"></a></span>
+<span id="cb50-252"><a href="#cb50-252"></a><span class="in">```{r}</span></span>
+<span id="cb50-253"><a href="#cb50-253"></a><span class="co"># (?&lt;=[SP|FA]): any character *before* the split point is a "SP" or "FA"</span></span>
+<span id="cb50-254"><a href="#cb50-254"></a><span class="co"># (?=2): the first character *after* the split point is a 2</span></span>
+<span id="cb50-255"><a href="#cb50-255"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb50-256"><a href="#cb50-256"></a>  <span class="fu">separate</span>(sem, </span>
+<span id="cb50-257"><a href="#cb50-257"></a>          <span class="fu">c</span>(<span class="st">"semester"</span>, <span class="st">"year"</span>),</span>
+<span id="cb50-258"><a href="#cb50-258"></a>          <span class="st">"(?&lt;=[spring|fall])(?=2)"</span>)</span>
+<span id="cb50-259"><a href="#cb50-259"></a><span class="in">```</span></span>
+<span id="cb50-260"><a href="#cb50-260"></a></span>
+<span id="cb50-263"><a href="#cb50-263"></a><span class="in">```{r}</span></span>
+<span id="cb50-264"><a href="#cb50-264"></a><span class="co"># More general:</span></span>
+<span id="cb50-265"><a href="#cb50-265"></a><span class="co"># (?&lt;=[a-zA-Z]): any character *before* the split point is a lower or upper case letter</span></span>
+<span id="cb50-266"><a href="#cb50-266"></a><span class="co"># (?=[0-9]): the first character *after* the split point is number</span></span>
+<span id="cb50-267"><a href="#cb50-267"></a>classes <span class="sc">|&gt;</span> </span>
+<span id="cb50-268"><a href="#cb50-268"></a>  <span class="fu">separate</span>(sem, </span>
+<span id="cb50-269"><a href="#cb50-269"></a>          <span class="fu">c</span>(<span class="st">"semester"</span>, <span class="st">"year"</span>),</span>
+<span id="cb50-270"><a href="#cb50-270"></a>          <span class="st">"(?&lt;=[a-z])(?=[0-9])"</span>)</span>
+<span id="cb50-271"><a href="#cb50-271"></a><span class="in">```</span></span>
+<span id="cb50-272"><a href="#cb50-272"></a></span>
+<span id="cb50-273"><a href="#cb50-273"></a></span>
+<span id="cb50-274"><a href="#cb50-274"></a></span>
+<span id="cb50-275"><a href="#cb50-275"></a><span class="fu">## Exercises</span></span>
+<span id="cb50-276"><a href="#cb50-276"></a></span>
+<span id="cb50-277"><a href="#cb50-277"></a></span>
+<span id="cb50-278"><a href="#cb50-278"></a><span class="fu">### Exercise 1: Time slots {.unnumbered}</span></span>
+<span id="cb50-279"><a href="#cb50-279"></a></span>
+<span id="cb50-280"><a href="#cb50-280"></a>The <span class="in">`courses`</span> data includes *actual* data scraped from Mac's <span class="co">[</span><span class="ot">class schedule</span><span class="co">](https://macadmsys.macalester.edu/macssb/customPage/page/classSchedule)</span>. (Thanks to Prof Leslie Myint for the scraping code!!)</span>
+<span id="cb50-281"><a href="#cb50-281"></a></span>
+<span id="cb50-282"><a href="#cb50-282"></a>If you want to learn how to scrape data, take COMP/STAT 212, Intermediate Data Science! NOTE: For simplicity, I removed classes that had "TBA" for the <span class="in">`days`</span>.</span>
+<span id="cb50-283"><a href="#cb50-283"></a></span>
+<span id="cb50-286"><a href="#cb50-286"></a><span class="in">```{r}</span></span>
+<span id="cb50-287"><a href="#cb50-287"></a>courses <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/registrar.csv"</span>)</span>
+<span id="cb50-288"><a href="#cb50-288"></a></span>
+<span id="cb50-289"><a href="#cb50-289"></a><span class="co"># Check it out</span></span>
+<span id="cb50-290"><a href="#cb50-290"></a><span class="fu">head</span>(courses)</span>
+<span id="cb50-291"><a href="#cb50-291"></a><span class="in">```</span></span>
+<span id="cb50-292"><a href="#cb50-292"></a></span>
+<span id="cb50-293"><a href="#cb50-293"></a>Use our more familiar wrangling tools to warm up.</span>
+<span id="cb50-294"><a href="#cb50-294"></a></span>
+<span id="cb50-297"><a href="#cb50-297"></a><span class="in">```{r}</span></span>
+<span id="cb50-298"><a href="#cb50-298"></a><span class="co"># Construct a table that indicates the number of classes offered in each day/time slot</span></span>
+<span id="cb50-299"><a href="#cb50-299"></a><span class="co"># Print only the 6 most popular time slots</span></span>
+<span id="cb50-300"><a href="#cb50-300"></a></span>
+<span id="cb50-301"><a href="#cb50-301"></a>courses <span class="sc">|&gt;</span></span>
+<span id="cb50-302"><a href="#cb50-302"></a>  <span class="fu">count</span>(days,time) <span class="sc">|&gt;</span></span>
+<span id="cb50-303"><a href="#cb50-303"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb50-304"><a href="#cb50-304"></a>  <span class="fu">head</span>(<span class="dv">6</span>)</span>
+<span id="cb50-305"><a href="#cb50-305"></a></span>
+<span id="cb50-306"><a href="#cb50-306"></a><span class="in">```</span></span>
+<span id="cb50-307"><a href="#cb50-307"></a></span>
+<span id="cb50-308"><a href="#cb50-308"></a></span>
+<span id="cb50-309"><a href="#cb50-309"></a></span>
+<span id="cb50-310"><a href="#cb50-310"></a><span class="fu">### Exercise 2: Prep the data {.unnumbered}</span></span>
+<span id="cb50-311"><a href="#cb50-311"></a></span>
+<span id="cb50-312"><a href="#cb50-312"></a>So that we can analyze it later, we want to wrangle the <span class="in">`courses`</span> data:</span>
+<span id="cb50-313"><a href="#cb50-313"></a></span>
+<span id="cb50-314"><a href="#cb50-314"></a><span class="ss">-   </span>Let's get some enrollment info:</span>
+<span id="cb50-315"><a href="#cb50-315"></a><span class="ss">    -   </span>Split <span class="in">`avail_max`</span> into 2 separate variables: <span class="in">`avail`</span> and <span class="in">`max`</span>.</span>
+<span id="cb50-316"><a href="#cb50-316"></a><span class="ss">    -   </span>Use <span class="in">`avail`</span> and <span class="in">`max`</span> to define a new variable called <span class="in">`enrollment`</span>. HINT: You'll need <span class="in">`as.numeric()`</span></span>
+<span id="cb50-317"><a href="#cb50-317"></a><span class="ss">-   </span>Split the course <span class="in">`number`</span> into 3 separate variables: <span class="in">`dept`</span>, <span class="in">`number`</span>, and <span class="in">`section`</span>. HINT: You can use <span class="in">`separate()`</span> to split a variable into 3, not just 2 new variables.</span>
+<span id="cb50-318"><a href="#cb50-318"></a></span>
+<span id="cb50-319"><a href="#cb50-319"></a>Store this as <span class="in">`courses_clean`</span> so that you can use it later.</span>
+<span id="cb50-320"><a href="#cb50-320"></a></span>
+<span id="cb50-323"><a href="#cb50-323"></a><span class="in">```{r}</span></span>
+<span id="cb50-324"><a href="#cb50-324"></a>courses_clean <span class="ot">&lt;-</span> courses <span class="sc">|&gt;</span></span>
+<span id="cb50-325"><a href="#cb50-325"></a>  <span class="fu">separate</span>(avail_max, <span class="fu">c</span>(<span class="st">"avail"</span>, <span class="st">"max"</span>), <span class="at">sep =</span> <span class="st">"/"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb50-326"><a href="#cb50-326"></a>  <span class="fu">mutate</span>(<span class="at">avail =</span> <span class="fu">as.numeric</span>(avail)) <span class="sc">|&gt;</span></span>
+<span id="cb50-327"><a href="#cb50-327"></a>  <span class="fu">mutate</span>(<span class="at">max =</span> <span class="fu">as.numeric</span>(max)) <span class="sc">|&gt;</span></span>
+<span id="cb50-328"><a href="#cb50-328"></a>  <span class="fu">mutate</span>(<span class="at">enrollment =</span> max <span class="sc">-</span> avail)</span>
+<span id="cb50-329"><a href="#cb50-329"></a></span>
+<span id="cb50-330"><a href="#cb50-330"></a>courses_clean <span class="ot">&lt;-</span> courses_clean <span class="sc">|&gt;</span></span>
+<span id="cb50-331"><a href="#cb50-331"></a>  <span class="fu">separate</span>(number, <span class="fu">c</span>(<span class="st">"dept"</span>, <span class="st">"number"</span>, <span class="st">"selection"</span>))</span>
+<span id="cb50-332"><a href="#cb50-332"></a></span>
+<span id="cb50-333"><a href="#cb50-333"></a></span>
+<span id="cb50-334"><a href="#cb50-334"></a><span class="in">```</span></span>
+<span id="cb50-335"><a href="#cb50-335"></a></span>
+<span id="cb50-336"><a href="#cb50-336"></a></span>
+<span id="cb50-337"><a href="#cb50-337"></a></span>
+<span id="cb50-338"><a href="#cb50-338"></a><span class="fu">### Exercise 3: Courses by department {.unnumbered}</span></span>
+<span id="cb50-339"><a href="#cb50-339"></a></span>
+<span id="cb50-340"><a href="#cb50-340"></a>Using <span class="in">`courses_clean`</span>...</span>
+<span id="cb50-341"><a href="#cb50-341"></a></span>
+<span id="cb50-344"><a href="#cb50-344"></a><span class="in">```{r}</span></span>
+<span id="cb50-345"><a href="#cb50-345"></a><span class="co"># Identify the 6 departments that offered the most sections</span></span>
+<span id="cb50-346"><a href="#cb50-346"></a></span>
+<span id="cb50-347"><a href="#cb50-347"></a>courses_clean <span class="sc">|&gt;</span></span>
+<span id="cb50-348"><a href="#cb50-348"></a><span class="fu">count</span>(dept) <span class="sc">|&gt;</span></span>
+<span id="cb50-349"><a href="#cb50-349"></a> <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb50-350"><a href="#cb50-350"></a> <span class="fu">head</span>(<span class="dv">6</span>)</span>
+<span id="cb50-351"><a href="#cb50-351"></a></span>
+<span id="cb50-352"><a href="#cb50-352"></a><span class="co"># Identify the 6 departments with the longest average course titles</span></span>
+<span id="cb50-353"><a href="#cb50-353"></a>courses_clean <span class="sc">|&gt;</span></span>
+<span id="cb50-354"><a href="#cb50-354"></a>  <span class="fu">mutate</span>(<span class="at">name_length =</span> <span class="fu">str_length</span>(name)) <span class="sc">|&gt;</span></span>
+<span id="cb50-355"><a href="#cb50-355"></a>  <span class="fu">group_by</span>(dept) <span class="sc">|&gt;</span></span>
+<span id="cb50-356"><a href="#cb50-356"></a>  <span class="fu">summarize</span>(<span class="at">lact =</span> <span class="fu">mean</span>(name_length)) <span class="sc">|&gt;</span></span>
+<span id="cb50-357"><a href="#cb50-357"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(lact)) <span class="sc">|&gt;</span></span>
+<span id="cb50-358"><a href="#cb50-358"></a>  <span class="fu">head</span>(<span class="dv">6</span>)</span>
+<span id="cb50-359"><a href="#cb50-359"></a></span>
+<span id="cb50-360"><a href="#cb50-360"></a><span class="in">```</span></span>
+<span id="cb50-361"><a href="#cb50-361"></a></span>
+<span id="cb50-362"><a href="#cb50-362"></a></span>
+<span id="cb50-363"><a href="#cb50-363"></a></span>
+<span id="cb50-364"><a href="#cb50-364"></a><span class="fu">### Exercise 4: STAT courses {.unnumbered}</span></span>
+<span id="cb50-365"><a href="#cb50-365"></a></span>
+<span id="cb50-366"><a href="#cb50-366"></a><span class="fu">#### Part a {.unnumbered}</span></span>
+<span id="cb50-367"><a href="#cb50-367"></a></span>
+<span id="cb50-368"><a href="#cb50-368"></a>Get a subset of <span class="in">`courses_clean`</span> that only includes courses taught by Alicia Johnson.</span>
+<span id="cb50-369"><a href="#cb50-369"></a></span>
+<span id="cb50-372"><a href="#cb50-372"></a><span class="in">```{r}</span></span>
+<span id="cb50-373"><a href="#cb50-373"></a>courses_clean <span class="sc">|&gt;</span></span>
+<span id="cb50-374"><a href="#cb50-374"></a>  <span class="fu">filter</span>(instructor <span class="sc">==</span> <span class="st">"Alicia Johnson"</span>)</span>
+<span id="cb50-375"><a href="#cb50-375"></a><span class="in">```</span></span>
+<span id="cb50-376"><a href="#cb50-376"></a></span>
+<span id="cb50-377"><a href="#cb50-377"></a><span class="fu">#### Part b {.unnumbered}</span></span>
+<span id="cb50-378"><a href="#cb50-378"></a></span>
+<span id="cb50-379"><a href="#cb50-379"></a>Create a new dataset from <span class="in">`courses_clean`</span>, named <span class="in">`stat`</span>, that only includes STAT sections. In this dataset:</span>
+<span id="cb50-380"><a href="#cb50-380"></a></span>
+<span id="cb50-381"><a href="#cb50-381"></a><span class="ss">-   </span>In the course names:</span>
+<span id="cb50-382"><a href="#cb50-382"></a></span>
+<span id="cb50-383"><a href="#cb50-383"></a><span class="ss">    -   </span>Remove "Introduction to" from any name.</span>
+<span id="cb50-384"><a href="#cb50-384"></a><span class="ss">    -   </span>Shorten "Statistical" to "Stat" where relevant.</span>
+<span id="cb50-385"><a href="#cb50-385"></a></span>
+<span id="cb50-386"><a href="#cb50-386"></a><span class="ss">-   </span>Define a variable that records the <span class="in">`start_time`</span> for the course.</span>
+<span id="cb50-387"><a href="#cb50-387"></a></span>
+<span id="cb50-388"><a href="#cb50-388"></a><span class="ss">-   </span>Keep only the <span class="in">`number, name, start_time, enroll`</span> columns.</span>
+<span id="cb50-389"><a href="#cb50-389"></a></span>
+<span id="cb50-390"><a href="#cb50-390"></a><span class="ss">-   </span>The result should have 18 rows and 4 columns.</span>
+<span id="cb50-391"><a href="#cb50-391"></a></span>
+<span id="cb50-394"><a href="#cb50-394"></a><span class="in">```{r}</span></span>
+<span id="cb50-395"><a href="#cb50-395"></a>courses_clean <span class="sc">|&gt;</span></span>
+<span id="cb50-396"><a href="#cb50-396"></a>  <span class="fu">filter</span>(dept <span class="sc">==</span> <span class="st">"STAT"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb50-397"><a href="#cb50-397"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_replace</span>(name, <span class="st">"Statistical"</span>, <span class="st">"Stat"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb50-398"><a href="#cb50-398"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_replace</span>(name, <span class="st">"Introduction to "</span>, <span class="st">""</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb50-399"><a href="#cb50-399"></a>  <span class="fu">separate</span>(time, <span class="fu">c</span>(<span class="st">"start"</span>, <span class="st">"end"</span>), <span class="at">sep=</span> <span class="st">"-"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb50-400"><a href="#cb50-400"></a>  <span class="fu">mutate</span>(<span class="at">start_time =</span> start) <span class="sc">|&gt;</span></span>
+<span id="cb50-401"><a href="#cb50-401"></a>  <span class="fu">select</span>(number, name, start_time, enrollment)</span>
+<span id="cb50-402"><a href="#cb50-402"></a><span class="in">```</span></span>
+<span id="cb50-403"><a href="#cb50-403"></a></span>
+<span id="cb50-404"><a href="#cb50-404"></a></span>
+<span id="cb50-405"><a href="#cb50-405"></a></span>
+<span id="cb50-406"><a href="#cb50-406"></a><span class="fu">### Exercise 5: More cleaning {.unnumbered}</span></span>
+<span id="cb50-407"><a href="#cb50-407"></a></span>
+<span id="cb50-408"><a href="#cb50-408"></a>In the next exercises, we'll dig into enrollments. Let's get the data ready for that analysis here. Make the following changes to the <span class="in">`courses_clean`</span> data. Because they have different enrollment structures, and we don't want to compare apples and oranges, *remove* the following:</span>
+<span id="cb50-409"><a href="#cb50-409"></a></span>
+<span id="cb50-410"><a href="#cb50-410"></a><span class="ss">-   </span>all sections in <span class="in">`PE`</span> and <span class="in">`INTD`</span> (interdisciplinary studies courses)</span>
+<span id="cb50-411"><a href="#cb50-411"></a></span>
+<span id="cb50-412"><a href="#cb50-412"></a><span class="ss">-   </span>all music ensembles and dance practicums, i.e. all MUSI and THDA classes with numbers less than 100. HINT: <span class="in">`!(dept == "MUSI" &amp; as.numeric(number) &lt; 100)`</span></span>
+<span id="cb50-413"><a href="#cb50-413"></a></span>
+<span id="cb50-414"><a href="#cb50-414"></a><span class="ss">-   </span>all lab sections. Be careful which variable you use here. For example, you don't want to search by "Lab" and accidentally eliminate courses with words such as "Labor".</span>
+<span id="cb50-415"><a href="#cb50-415"></a></span>
+<span id="cb50-416"><a href="#cb50-416"></a>Save the results as <span class="in">`enrollments`</span> (don't overwrite <span class="in">`courses_clean`</span>).</span>
+<span id="cb50-417"><a href="#cb50-417"></a></span>
+<span id="cb50-420"><a href="#cb50-420"></a><span class="in">```{r}</span></span>
+<span id="cb50-421"><a href="#cb50-421"></a>enrollments <span class="ot">&lt;-</span> courses_clean <span class="sc">|&gt;</span></span>
+<span id="cb50-422"><a href="#cb50-422"></a>  <span class="fu">filter</span>(dept <span class="sc">!=</span> <span class="fu">c</span>(<span class="st">"PE"</span>, <span class="st">"INTD"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb50-423"><a href="#cb50-423"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(dept <span class="sc">==</span> <span class="st">"MUSI"</span> <span class="sc">&amp;</span> <span class="fu">as.numeric</span>(number) <span class="sc">&lt;</span> <span class="dv">100</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb50-424"><a href="#cb50-424"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(dept <span class="sc">==</span> <span class="st">"THDA"</span> <span class="sc">&amp;</span> <span class="fu">as.numeric</span>(number) <span class="sc">&lt;</span> <span class="dv">100</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb50-425"><a href="#cb50-425"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(selection, <span class="st">"L"</span>))</span>
+<span id="cb50-426"><a href="#cb50-426"></a>  </span>
+<span id="cb50-427"><a href="#cb50-427"></a><span class="in">```</span></span>
+<span id="cb50-428"><a href="#cb50-428"></a></span>
+<span id="cb50-429"><a href="#cb50-429"></a></span>
+<span id="cb50-430"><a href="#cb50-430"></a></span>
+<span id="cb50-431"><a href="#cb50-431"></a><span class="fu">### Exercise 6: Enrollment &amp; departments {.unnumbered}</span></span>
+<span id="cb50-432"><a href="#cb50-432"></a></span>
+<span id="cb50-433"><a href="#cb50-433"></a>Explore enrollments by department. *You* decide what research questions to focus on. Use both visual and numerical summaries.</span>
+<span id="cb50-434"><a href="#cb50-434"></a></span>
+<span id="cb50-437"><a href="#cb50-437"></a><span class="in">```{r}</span></span>
+<span id="cb50-438"><a href="#cb50-438"></a><span class="fu">head</span>(enrollments)</span>
+<span id="cb50-439"><a href="#cb50-439"></a></span>
+<span id="cb50-440"><a href="#cb50-440"></a></span>
+<span id="cb50-441"><a href="#cb50-441"></a>enrollments <span class="ot">&lt;-</span> enrollments <span class="sc">|&gt;</span></span>
+<span id="cb50-442"><a href="#cb50-442"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_replace</span>(name, <span class="st">"Statistical"</span>, <span class="st">"Stat"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb50-443"><a href="#cb50-443"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_replace</span>(name, <span class="st">"Introduction to "</span>, <span class="st">""</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb50-444"><a href="#cb50-444"></a>  <span class="fu">separate</span>(time, <span class="fu">c</span>(<span class="st">"start"</span>, <span class="st">"end"</span>), <span class="at">sep=</span> <span class="st">"-"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb50-445"><a href="#cb50-445"></a>  <span class="fu">mutate</span>(<span class="at">start_time =</span> start)</span>
+<span id="cb50-446"><a href="#cb50-446"></a></span>
+<span id="cb50-447"><a href="#cb50-447"></a><span class="in">```</span></span>
+<span id="cb50-448"><a href="#cb50-448"></a></span>
+<span id="cb50-451"><a href="#cb50-451"></a><span class="in">```{r}</span></span>
+<span id="cb50-452"><a href="#cb50-452"></a>enrollments <span class="sc">|&gt;</span></span>
+<span id="cb50-453"><a href="#cb50-453"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>enrollment, <span class="at">color=</span>dept)) <span class="sc">+</span></span>
+<span id="cb50-454"><a href="#cb50-454"></a>  <span class="fu">geom_density</span>()</span>
+<span id="cb50-455"><a href="#cb50-455"></a></span>
+<span id="cb50-456"><a href="#cb50-456"></a><span class="in">```</span></span>
+<span id="cb50-457"><a href="#cb50-457"></a></span>
+<span id="cb50-458"><a href="#cb50-458"></a></span>
+<span id="cb50-461"><a href="#cb50-461"></a><span class="in">```{r}</span></span>
+<span id="cb50-462"><a href="#cb50-462"></a>enrollments <span class="sc">|&gt;</span></span>
+<span id="cb50-463"><a href="#cb50-463"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>enrollment, <span class="at">y=</span>dept)) <span class="sc">+</span></span>
+<span id="cb50-464"><a href="#cb50-464"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb50-465"><a href="#cb50-465"></a></span>
+<span id="cb50-466"><a href="#cb50-466"></a><span class="in">```</span></span>
+<span id="cb50-467"><a href="#cb50-467"></a></span>
+<span id="cb50-468"><a href="#cb50-468"></a></span>
+<span id="cb50-471"><a href="#cb50-471"></a><span class="in">```{r}</span></span>
+<span id="cb50-472"><a href="#cb50-472"></a>enrollments <span class="sc">|&gt;</span></span>
+<span id="cb50-473"><a href="#cb50-473"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>enrollment, <span class="at">y=</span>dept, <span class="at">color=</span>start_time)) <span class="sc">+</span></span>
+<span id="cb50-474"><a href="#cb50-474"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb50-475"><a href="#cb50-475"></a>  </span>
+<span id="cb50-476"><a href="#cb50-476"></a><span class="in">```</span></span>
+<span id="cb50-477"><a href="#cb50-477"></a></span>
+<span id="cb50-478"><a href="#cb50-478"></a></span>
+<span id="cb50-479"><a href="#cb50-479"></a></span>
+<span id="cb50-480"><a href="#cb50-480"></a></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+</body></html>
